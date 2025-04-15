@@ -1,0 +1,46 @@
+{
+  "sat_questions": [
+    {
+      "math_subject": "Algebra",
+      "question": "If 3x + 5 = 20, what is the value of x?",
+      "answer_choice_list": ["A. 5", "B. 10", "C. 15", "D. 20"],
+      "answer": "A"
+    },
+    {
+      "math_subject": "Geometry",
+      "question": "What is the area of a triangle with a base of 10 and height of 5?",
+      "answer_choice_list": ["A. 25", "B. 30", "C. 50", "D. 40"],
+      "answer": "A"
+    },
+    {
+      "math_subject": "Trigonometry",
+      "question": "What is the sine of a 30-degree angle?",
+      "answer_choice_list": ["A. 0.5", "B. 0.75", "C. 1", "D. 0"],
+      "answer": "A"
+    },
+    {
+      "math_subject": "Advanced Math",
+      "question": "What is the value of x in the equation x^2 - 4x - 5 = 0?",
+      "answer_choice_list": ["A. 5", "B. -1", "C. 1", "D. 6"],
+      "answer": "A"
+    },
+    {
+      "math_subject": "Problem-Solving and Data Analysis",
+      "question": "If a container holds 80 liters of water, how many liters are in 25% of the container?",
+      "answer_choice_list": ["A. 20", "B. 25", "C. 15", "D. 30"],
+      "answer": "A"
+    },
+    {
+      "math_subject": "Math word problems",
+      "question": "A car travels 60 miles per hour. How far will it travel in 2.5 hours?",
+      "answer_choice_list": ["A. 150 miles", "B. 120 miles", "C. 100 miles", "D. 180 miles"],
+      "answer": "A"
+    },
+    {
+      "math_subject": "Algebra",
+      "question": "If y = 2x + 3, what is the value of y when x = 4?",
+      "answer_choice_list": ["A. 11", "B. 12", "C. 10", "D. 9"],
+      "answer": "A"
+    }
+  ]
+}
