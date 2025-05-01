@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 const QuizApp = () => {
+  const [difficulty, setDifficulty] = useState('medium'); // Added remove if needed
   const [quizData, setQuizData] = useState(null);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState('');
@@ -16,23 +17,30 @@ const QuizApp = () => {
   const [isTimerRunning, setIsTimerRunning] = useState(false);
   const [isGeneratingNew, setIsGeneratingNew] = useState(false);
   const timerRef = useRef(null);
+  const API_URL = 'https://kbolando2172.pythonanywhere.com';
   
   const apiEndpoint = "https://kbolando2172.pythonanywhere.com";
 
   // Fetch quiz data
   useEffect(() => {
     fetchQuizData();
-  }, []);
+  }, [difficulty]);
+  //}, []);
   
   // Function to fetch quiz data from API
   const fetchQuizData = async () => {
     try {
       setLoading(true);
       setIsGeneratingNew(true);
-      
+
+      // build URL with difficulty
+      const url = `${apiEndpoint}/?num_questions=4&difficulty=${encodeURIComponent(difficulty)}`;
+
       // Fetch data from the API endpoint
-      const response = await fetch(apiEndpoint);
-      
+      //const url = `${apiEndpoint}/?num_questions=4&difficulty=${encodeURIComponent(difficulty)}`;
+     const response = await fetch(url);
+     //const response = await fetch(apiEndpoint);
+     
       if (!response.ok) {
         throw new Error(`Server responded with ${response.status}: ${response.statusText}`);
       }
@@ -262,7 +270,23 @@ const QuizApp = () => {
     return (
       <div className="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-lg">
         <h1 className="text-2xl font-bold mb-6 text-center">SAT Math Quiz</h1>
-        
+{/* // Settings bar // */}
+  <div className="flex justify-center space-x-2 mb-4">
+    {['easy','medium','hard','very hard'].map(level => (
+      <button
+        key={level}
+        onClick={() => setDifficulty(level)}
+        className={
+          `px-3 py-1 rounded
+           ${difficulty === level 
+             ? 'bg-blue-600 text-white' 
+             : 'bg-gray-200 text-gray-800 hover:bg-gray-300'}`
+        }
+      >
+        {level.split(' ').map(w => w[0].toUpperCase()+w.slice(1)).join(' ')}
+      </button>
+    ))}
+  </div>
         {/* Subject Filter */}
         <div className="mb-4">
           <label className="block mb-2 font-medium">Select Subject:</label>
