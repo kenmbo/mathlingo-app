@@ -34,7 +34,7 @@ const QuizApp = () => {
       setIsGeneratingNew(true);
 
       // build URL with difficulty
-      const url = `${apiEndpoint}/?num_questions=4&difficulty=${encodeURIComponent(difficulty)}`;
+      const url = `${apiEndpoint}/?num_questions=20&difficulty=${encodeURIComponent(difficulty)}`;
 
       // Fetch data from the API endpoint
       //const url = `${apiEndpoint}/?num_questions=4&difficulty=${encodeURIComponent(difficulty)}`;
