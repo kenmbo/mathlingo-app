@@ -7,6 +7,9 @@ import { useState, useEffect } from 'react';
  * @param {string} difficulty - Difficulty level (e.g., 'easy', 'medium', 'hard')
  * @returns {{ questions: Array, loading: boolean, error: Error|null }}
  */
+
+const API_BASE = process.env.REACT_APP_API_BASE_URL;
+
 export function useStreamedQuestions(numQuestions, difficulty) {
   const [questions, setQuestions] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -21,9 +24,9 @@ export function useStreamedQuestions(numQuestions, difficulty) {
       setQuestions([]);
 
       try {
-        const response = await fetch(
-          `/stream_questions?num_questions=${numQuestions}&difficulty=${encodeURIComponent(difficulty)}`
-        );
+      const response = await fetch(
+      `${API_BASE}/stream_questions?num_questions=${numQuestions}&difficulty=${encodeURIComponent(difficulty)}`
+      );
         if (!response.ok) {
           throw new Error(`HTTP ${response.status}: ${response.statusText}`);
         }
