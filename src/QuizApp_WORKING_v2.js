@@ -34,9 +34,7 @@ export default function QuizApp() {
   const [loadingRest, setLoadingRest] = useState(false);
   const [error, setError] = useState(null);
 
-  // Refs for timer and audio
   const timerRef = useRef(null);
-  const audioRef = useRef(null);
 
   // Batch sizes
   const initialBatch = Math.min(2, numQuestions);
@@ -141,36 +139,6 @@ export default function QuizApp() {
   const subjects = Array.from(new Set([...initialQuestions, ...restQuestions].map(q => q.math_subject)));
   const allSubjects = ['All', ...subjects];
 
-  // Text-to-Speech effect: fetch TTS but prepare pauses via commas
-  useEffect(() => {
-    const current = filteredQuestions[currentQuestionIndex];
-    if (!current) return;
-    const { question, answer_choice_list } = current;
-
-    // Join choices with commas to induce pauses
-    const choicesText = answer_choice_list.join(', ');
-    //const speakText = `${question}. Choices: ${choicesText}.`;
-    const speakText = `
-    <speak>${question}.
-    <break time="1s"/>
-    Choices: ${choicesText}.
-    </speak>`.trim();
-
-    fetch(`${API_URL}/tts`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ text: speakText })
-    })
-      .then(res => res.blob())
-      .then(blob => {
-        const url = URL.createObjectURL(blob);
-        if (audioRef.current) {
-          audioRef.current.src = url;
-        }
-      })
-      .catch(err => console.error('TTS error:', err));
-  }, [currentQuestionIndex, filteredQuestions]);
-
   // Initial loading or errors
   if (loadingInit) return <div className="text-center p-6">Loading first batch…</div>;
   if (error) return <div className="text-center p-6 text-red-600">Error: {error}</div>;
@@ -193,48 +161,23 @@ export default function QuizApp() {
       <SettingsSidebar />
       <div className="flex-1 p-6 max-w-2xl mx-auto">
         <h1 className="text-2xl font-bold mb-4 text-center">SAT Math Quiz</h1>
-
         {/* Difficulty Buttons */}
         <div className="flex justify-center space-x-2 mb-4">
           {['easy','medium','hard','very hard'].map(level => (
-            <button
-              key={level}
-              onClick={() => setDifficulty(level)}
-              className={`px-3 py-1 rounded ${difficulty===level ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-800 hover:bg-gray-300'}`}
-            >
-              {level.charAt(0).toUpperCase()+level.slice(1)}
-            </button>
+            <button key={level} onClick={() => setDifficulty(level)} className={`px-3 py-1 rounded ${difficulty===level? 'bg-blue-600 text-white':'bg-gray-200 text-gray-800 hover:bg-gray-300'}`}>{level.charAt(0).toUpperCase()+level.slice(1)}</button>
           ))}
         </div>
-
         {/* Timer Slider */}
         <div className="mb-4">
           <label className="block mb-1">Time per question: {timePerQuestion}s</label>
-          <input
-            type="range"
-            min={10}
-            max={120}
-            value={timePerQuestion}
-            onChange={e => handleTimerAdjustment(+e.target.value)}
-            className="w-full"
-            disabled={isAnswerSubmitted}
-          />
+          <input type="range" min={10} max={120} value={timePerQuestion} onChange={e => handleTimerAdjustment(+e.target.value)} className="w-full" disabled={isAnswerSubmitted}/>
         </div>
-
         {/* Question Count Slider */}
         <div className="mb-4 flex items-center">
           <label className="mr-4">Questions: {pendingNumQuestions}</label>
-          <input
-            type="range"
-            min={1}
-            max={50}
-            value={pendingNumQuestions}
-            onChange={e => setPendingNumQuestions(+e.target.value)}
-            className="flex-1"
-          />
+          <input type="range" min={1} max={50} value={pendingNumQuestions} onChange={e => setPendingNumQuestions(+e.target.value)} className="flex-1" />
           <button onClick={applyNumQuestions} className="ml-4 px-4 py-2 bg-blue-500 text-white rounded">Apply</button>
         </div>
-
         {/* Subject Filter */}
         <div className="mb-4">
           <label className="block mb-1">Subject:</label>
@@ -242,27 +185,8 @@ export default function QuizApp() {
             {allSubjects.map(s => <option key={s} value={s}>{s}</option>)}
           </select>
         </div>
-
-        {/* Play Button & Hidden Audio */}
-        <div className="mb-4 flex justify-center">
-          <button onClick={() => audioRef.current && audioRef.current.play()} className="px-4 py-2 bg-green-500 text-white rounded">🔊 Play Question</button>
-          <audio ref={audioRef} controls style={{ display: 'none' }} />
-        </div>
-
         {/* Quiz Component */}
-        <Quiz
-          question={current}
-          selectedAnswer={selectedAnswer}
-          isAnswerSubmitted={isAnswerSubmitted}
-          onAnswerSelect={handleAnswerSelect}
-          onSubmitAnswer={handleSubmitAnswer}
-          onNextQuestion={handleNext}
-          currentIndex={currentQuestionIndex + 1}
-          total={filteredQuestions.length}
-          score={score}
-          timeRemaining={timeRemaining}
-        />
-
+        <Quiz question={current} selectedAnswer={selectedAnswer} isAnswerSubmitted={isAnswerSubmitted} onAnswerSelect={handleAnswerSelect} onSubmitAnswer={handleSubmitAnswer} onNextQuestion={handleNext} currentIndex={currentQuestionIndex+1} total={filteredQuestions.length} score={score} timeRemaining={timeRemaining} />
         {loadingRest && <div className="mt-4 text-sm text-gray-500">Loading more…</div>}
       </div>
     </div>

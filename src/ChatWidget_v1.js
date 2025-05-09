@@ -2,7 +2,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 const API_URL = 'https://kbolando2172.pythonanywhere.com';
-const INITIAL_GREETING = "Hello! How can I assist you today?";
 
 export default function ChatWidget() {
   const [open, setOpen] = useState(false);
@@ -16,13 +15,6 @@ export default function ChatWidget() {
       messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   }, [messages]);
-
-  // Send initial greeting when opening the chat for the first time
-  useEffect(() => {
-    if (open && messages.length === 0) {
-      setMessages([{ sender: 'bot', text: INITIAL_GREETING }]);
-    }
-  }, [open]);
 
   const toggleOpen = () => setOpen(prev => !prev);
 

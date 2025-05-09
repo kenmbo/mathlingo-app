@@ -141,20 +141,17 @@ export default function QuizApp() {
   const subjects = Array.from(new Set([...initialQuestions, ...restQuestions].map(q => q.math_subject)));
   const allSubjects = ['All', ...subjects];
 
-  // Text-to-Speech effect: fetch TTS but prepare pauses via commas
+  // Text-to-Speech effect: speak each question when it changes
   useEffect(() => {
     const current = filteredQuestions[currentQuestionIndex];
     if (!current) return;
-    const { question, answer_choice_list } = current;
-
-    // Join choices with commas to induce pauses
-    const choicesText = answer_choice_list.join(', ');
-    //const speakText = `${question}. Choices: ${choicesText}.`;
-    const speakText = `
-    <speak>${question}.
-    <break time="1s"/>
-    Choices: ${choicesText}.
-    </speak>`.trim();
+    const { question, answer_choice_list, answer } = current;
+    const speakText = [
+      question,
+      'Choices:',
+      ...answer_choice_list,
+      `Answer: ${answer}`
+    ].join(' ');
 
     fetch(`${API_URL}/tts`, {
       method: 'POST',
@@ -166,6 +163,7 @@ export default function QuizApp() {
         const url = URL.createObjectURL(blob);
         if (audioRef.current) {
           audioRef.current.src = url;
+          audioRef.current.play();
         }
       })
       .catch(err => console.error('TTS error:', err));
@@ -238,14 +236,20 @@ export default function QuizApp() {
         {/* Subject Filter */}
         <div className="mb-4">
           <label className="block mb-1">Subject:</label>
-          <select value={selectedSubject} onChange={e => setSelectedSubject(e.target.value)} className="w-full p-2 border rounded">
+          <select
+            value={selectedSubject}
+            onChange={e => setSelectedSubject(e.target.value)}
+            className="w-full p-2 border rounded"
+          >
             {allSubjects.map(s => <option key={s} value={s}>{s}</option>)}
           </select>
         </div>
 
         {/* Play Button & Hidden Audio */}
         <div className="mb-4 flex justify-center">
-          <button onClick={() => audioRef.current && audioRef.current.play()} className="px-4 py-2 bg-green-500 text-white rounded">🔊 Play Question</button>
+          <button onClick={() => audioRef.current && audioRef.current.play()} className="px-4 py-2 bg-green-500 text-white rounded">
+            🔊 Play Question
+          </button>
           <audio ref={audioRef} controls style={{ display: 'none' }} />
         </div>
 

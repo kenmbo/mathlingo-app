@@ -4,7 +4,7 @@ import logo from './logo.svg';
 import './App.css';
 import './assets/quiz-styles.css';
 import ChatWidget from './ChatWidget'
-import SettingsSidebar from './SettingsSidebar';
+import SettingsSidebar from './ChatWidget'
 
 function App() {
   
