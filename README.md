@@ -1,3 +1,16 @@
+# Mathlingo Multiple-Quiz Frontend
+### Installation
+```
+git clone https://github.com/kenmbo/mathlingo-app.git
+cd mathlingo-app/
+npm run dev
+```
+
+### Todo: 
+- Github contribution-like habit-tracker (reduce it to just monthly-tracking instead of annual)
+- List npm depndencies
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
