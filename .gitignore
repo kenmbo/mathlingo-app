@@ -1,27 +1,3 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
-/node_modules
-/.pnp
-.pnp.js
-
-# testing
-/coverage
-
-# production
-/build
-
-# misc
-.DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
 # Logs
 logs
 *.log
@@ -31,66 +7,18 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-# Diagnostic reports
-report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+node_modules
+dist
+dist-ssr
+*.local
 
-# Runtime data
-pids
-*.pid
-*.seed
-*.pid.lock
-
-# Dependency directories
-node_modules/
-jspm_packages/
-
-# TypeScript cache
-*.tsbuildinfo
-
-# Optional npm cache directory
-.npm
-
-# Output directory (Vite build folder)
-dist/
-dist-ssr/
-
-# Temporary folders
-.eslintcache
-.stylelintcache
-.cache/
-.parcel-cache/
-
-# Next.js / Nuxt.js / Vite build caches
-.vite/
-.nuxt/
-.next/
-
-# Environment variables (Crucial for security)
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-# Serverless Webpack directories
-.webpack/
-
-# Bundler caches
-.turbo/
-
-# Editor / IDE settings
+# Editor directories and files
 .vscode/*
 !.vscode/extensions.json
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-.idea/
+.idea
+.DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
-
-# Testing
-coverage/
-.nyc_output
