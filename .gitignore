@@ -7,18 +7,40 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
+# Dependency directories
+node_modules/
+jspm_packages/
 
-# Editor directories and files
+# TypeScript/JavaScript build artifacts
+build/
+dist/
+dist-ssr/
+*.tsbuildinfo
+
+# Runtime data
+*.pid
+*.seed
+*.lock.lck
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Visual Studio Code
 .vscode/*
 !.vscode/extensions.json
-.idea
-.DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+!.vscode/tasks.json
+!.vscode/launch.json
+.history/
+.ionide/
+
+# JetBrains IDEs
+.idea/
+*.iml
+
+# Environment Variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
