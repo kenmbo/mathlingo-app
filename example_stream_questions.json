@@ -1,1 +1,45 @@
-{"questions":[{"answer":"C","answer_choice_list":["A. 3","B. 5","C. 7","D. 9"],"difficulty":"medium","math_subject":"Algebra","question":"If 3(x - 4) + 2 = 2x + 5, what is the value of x?"},{"answer":"B","answer_choice_list":["A. Acute","B. Right","C. Obtuse","D. Equilateral"],"difficulty":"medium","math_subject":"Geometry","question":"A triangle has sides of lengths 6, 8, and 10. What type of triangle is it?"},{"answer":"A","answer_choice_list":["A. 9","B. 12","C. 13","D. 14"],"difficulty":"medium","math_subject":"Problem-Solving and Data Analysis","question":"The average of 5 numbers is 12. If four of the numbers are 10, 11, 13, and 14, what is the fifth number?"},{"answer":"B","answer_choice_list":["A. -4","B. -1","C. 0","D. 1"],"difficulty":"medium","math_subject":"Advanced Math","question":"If f(x) = x^2 - 6x + 5, what is the minimum value of f(x)?"},{"answer":"C","answer_choice_list":["A. $18","B. $20","C. $22","D. $24"],"difficulty":"medium","math_subject":"Math word problems","question":"A store sells notebooks for $3 each and pens for $2 each. If a student buys 4 notebooks and 5 pens, how much does the student pay in total?"}]}
+{
+  "questions": [
+    {
+      "id": "6d4c9e74-9e2f-4e61-9ad4-91e7d0f8a101",
+      "difficulty": "medium",
+      "math_subject": "Algebra",
+      "question": "If 3(x - 4) + 2 = 2x + 5, what is the value of x?",
+      "answer_choice_list": ["A. 3", "B. 5", "C. 7", "D. 9"],
+      "answer": "C"
+    },
+    {
+      "id": "6d4c9e74-9e2f-4e61-9ad4-91e7d0f8a102",
+      "difficulty": "medium",
+      "math_subject": "Geometry",
+      "question": "A triangle has sides of lengths 6, 8, and 10. What type of triangle is it?",
+      "answer_choice_list": ["A. Acute", "B. Right", "C. Obtuse", "D. Equilateral"],
+      "answer": "B"
+    },
+    {
+      "id": "6d4c9e74-9e2f-4e61-9ad4-91e7d0f8a103",
+      "difficulty": "medium",
+      "math_subject": "Problem-Solving and Data Analysis",
+      "question": "The average of 5 numbers is 12. If four of the numbers are 10, 11, 13, and 14, what is the fifth number?",
+      "answer_choice_list": ["A. 9", "B. 12", "C. 13", "D. 14"],
+      "answer": "A"
+    },
+    {
+      "id": "6d4c9e74-9e2f-4e61-9ad4-91e7d0f8a104",
+      "difficulty": "medium",
+      "math_subject": "Advanced Math",
+      "question": "If f(x) = x^2 - 6x + 5, what is the minimum value of f(x)?",
+      "answer_choice_list": ["A. -4", "B. -1", "C. 0", "D. 1"],
+      "answer": "B"
+    },
+    {
+      "id": "6d4c9e74-9e2f-4e61-9ad4-91e7d0f8a105",
+      "difficulty": "medium",
+      "math_subject": "Math word problems",
+      "question": "A store sells notebooks for $3 each and pens for $2 each. If a student buys 4 notebooks and 5 pens, how much does the student pay in total?",
+      "answer_choice_list": ["A. $18", "B. $20", "C. $22", "D. $24"],
+      "answer": "C"
+    }
+  ]
+}
+
