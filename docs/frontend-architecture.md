@@ -143,6 +143,7 @@ The frontend expects each question to have this shape:
 
 ```js
 {
+  id: "8c9f3f4b-7b7f-44d6-a2db-4d41f8d2f01d",
   difficulty: "medium",
   math_subject: "Algebra",
   question: "What is 3x when x = 4?",
@@ -158,6 +159,7 @@ The frontend expects each question to have this shape:
 
 Current assumptions:
 
+* `id` is a stable opaque string that identifies the public question.
 * `difficulty` is `easy`, `medium`, or `hard`.
 * `math_subject` is a display label.
 * `question` is plain question text.
@@ -515,6 +517,7 @@ Validation should confirm:
 
 * The response is an object.
 * `questions` is an array.
+* Every question has a non-empty string `id`.
 * Every question has a supported `difficulty`.
 * Every question has a string `math_subject`.
 * Every question has a string `question`.

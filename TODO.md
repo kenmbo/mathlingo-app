@@ -22,7 +22,9 @@ The initial roadmap targets the version 1.0 quiz experience:
 
 Milestone 0: Align Planning Documents and Development Fixture
 
-Status: Pending
+Status: Complete
+
+Next: Milestone 1 — Remove the Vite Starter Interface.
 
 ---
 
@@ -72,20 +74,24 @@ Before beginning a task:
 
 # Milestone 0 — Align Planning Documents and Development Fixture
 
+## Summary
+
+Milestone 0 is a documentation and fixture alignment pass. Before production quiz code is introduced, the frontend contract, architecture notes, and local example response should agree on the required question fields, stable question IDs, and the fact that `GET /stream_questions` returns one complete JSON payload rather than an incremental stream.
+
 ## Goal
 
 Ensure that the API contract, architecture document, and local development fixture agree on the required question shape before production code depends on them.
 
 ## Tasks
 
-* [ ] Compare the question shape in:
+* [x] Compare the question shape in:
 
   * `docs/api-contract.md`
   * `docs/frontend-architecture.md`
   * `example_stream_questions.json`
-* [ ] Add a stable example `id` to every question in `example_stream_questions.json`.
-* [ ] Update the question-shape example in `docs/frontend-architecture.md` to include `id`.
-* [ ] Confirm that the documented frontend question shape contains:
+* [x] Add a stable example `id` to every question in `example_stream_questions.json`.
+* [x] Update the question-shape example in `docs/frontend-architecture.md` to include `id`.
+* [x] Confirm that the documented frontend question shape contains:
 
   * `id`
   * `difficulty`
@@ -93,8 +99,12 @@ Ensure that the API contract, architecture document, and local development fixtu
   * `question`
   * `answer_choice_list`
   * `answer`
-* [ ] Confirm that no frontend document describes `/stream_questions` as an incremental stream.
-* [ ] Record any remaining contract disagreement as an explicit open decision.
+* [x] Confirm that no frontend document describes `/stream_questions` as an incremental stream.
+* [x] Record any remaining contract disagreement as an explicit open decision.
+
+## Open Decisions
+
+None. The fixture and frontend architecture now match the public question shape documented in `docs/api-contract.md`.
 
 ## Acceptance Criteria
 
@@ -115,8 +125,8 @@ Ensure that the API contract, architecture document, and local development fixtu
 
 ## Validation
 
-* [ ] Manually inspect the three relevant files.
-* [ ] Confirm that `example_stream_questions.json` is valid JSON.
+* [x] Manually inspect the three relevant files.
+* [x] Confirm that `example_stream_questions.json` is valid JSON.
 
 ---
 
@@ -1237,4 +1247,3 @@ List only milestones or decisions that must already be complete.
 * [ ] Run `npm run build`.
 * [ ] Run the documented test command when available.
 * [ ] Complete milestone-specific manual verification.
-
