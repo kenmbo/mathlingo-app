@@ -182,3 +182,28 @@ Future Codex agents should read these docs before making code changes.
 - Prefer small, maintainable components and clear UI states over broad rewrites.
 - Do not add authentication, persistent history, or large new dependencies without checking the current milestone in `TODO.md`.
 - Run `npm run lint` and, when useful, `npm run build` before finishing implementation tasks.
+
+### Important sections for Codex
+
+For this kind of project, prioritize these areas:
+
+1. **API location and contract**  
+   Codex needs to know where the API specification lives, how responses are shaped, and whether types are generated.
+
+2. **Authentication behavior**  
+   State whether authentication uses cookies, bearer tokens, OAuth, or another mechanism.
+
+3. **Request architecture**  
+   Clearly document whether components use a centralized API client, generated client, React Query hooks, or direct requests.
+
+4. **Environment configuration**  
+   Include the exact API URL variable, local defaults, and `.env.example` setup.
+
+5. **Required validation commands**  
+   Give exact commands for linting, type checking, testing, and production builds.
+
+6. **Frontend/backend responsibility boundary**  
+   Explain what validation and authorization must remain on the backend, and what the frontend handles only for presentation and usability.
+
+7. **Known backend dependencies**  
+   Identify required endpoints, API versions, backend branches, mock servers, or OpenAPI files.
