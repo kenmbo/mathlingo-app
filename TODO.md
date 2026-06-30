@@ -18,6 +18,14 @@ The initial roadmap targets the version 1.0 quiz experience:
 
 ---
 
+## Current Focus
+
+Milestone 0: Align Planning Documents and Development Fixture
+
+Status: Pending
+
+---
+
 ## How to Use This File
 
 ### Agent workflow
