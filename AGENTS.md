@@ -121,6 +121,15 @@ Tests must not call the real backend or OpenAI.
 
 ## Documentation Updates
 
+Update documentation when changing:
+
+- API request or response assumptions.
+- Environment variables.
+- Project commands.
+- Frontend architecture.
+- Dependency choices.
+- Milestone scope.
+
 When a milestone changes the app behavior or setup, update the relevant docs:
 
 - `README.md` for user/project setup changes.
