@@ -20,11 +20,11 @@ The initial roadmap targets the version 1.0 quiz experience:
 
 ## Current Focus
 
-Milestone 0: Align Planning Documents and Development Fixture
+Milestone 1: Remove the Vite Starter Interface
 
 Status: Complete
 
-Next: Milestone 1 — Remove the Vite Starter Interface.
+Next: Milestone 2 — Add Frontend Environment Configuration.
 
 ---
 
@@ -138,14 +138,14 @@ Replace the default Vite demonstration interface with a minimal MathLingo applic
 
 ## Tasks
 
-* [ ] Remove unused Vite starter assets and demonstration code.
-* [ ] Update `App.jsx` to render a basic MathLingo application container.
-* [ ] Keep `main.jsx` limited to application startup responsibilities.
-* [ ] Add a clear application heading.
-* [ ] Add a temporary placeholder describing the upcoming quiz interface.
-* [ ] Remove unused CSS from the starter template.
-* [ ] Establish basic global typography and page spacing in `src/index.css`.
-* [ ] Confirm there are no unused imports from the Vite starter.
+* [x] Remove unused Vite starter assets and demonstration code.
+* [x] Update `App.jsx` to render a basic MathLingo application container.
+* [x] Keep `main.jsx` limited to application startup responsibilities.
+* [x] Add a clear application heading.
+* [x] Add a temporary placeholder describing the upcoming quiz interface.
+* [x] Remove unused CSS from the starter template.
+* [x] Establish basic global typography and page spacing in `src/index.css`.
+* [x] Confirm there are no unused imports from the Vite starter.
 
 ## Acceptance Criteria
 
@@ -168,10 +168,10 @@ Replace the default Vite demonstration interface with a minimal MathLingo applic
 
 ## Validation
 
-* [ ] Run `npm run lint`.
-* [ ] Run `npm run build`.
-* [ ] Manually open the application with `npm run dev`.
-* [ ] Check the page at a narrow mobile viewport.
+* [x] Run `npm run lint`.
+* [x] Run `npm run build`.
+* [x] Manually open the application with `npm run dev`.
+* [x] Check the page at a narrow mobile viewport.
 
 ---
 
