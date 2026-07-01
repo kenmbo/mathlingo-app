@@ -9,6 +9,10 @@
   width: min(100%, 760px);
 }
 
+.app-shell--error .app-intro {
+  max-width: 680px;
+}
+
 .eyebrow {
   margin: 0 0 16px;
   color: var(--accent);

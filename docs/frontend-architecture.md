@@ -114,6 +114,16 @@ VITE_API_BASE_URL=http://127.0.0.1:5000
 
 The frontend must not contain OpenAI API keys, internal API keys, cron secrets, database credentials, or other backend secrets.
 
+Environment access is centralized in:
+
+```text
+src/config/environment.js
+```
+
+This module validates that `VITE_API_BASE_URL` is present and exposes the configured backend base URL for later API code.
+
+If the value is missing, the application should show a clear startup configuration error instead of continuing with an unknown backend URL.
+
 ### 4.2 Public question endpoint
 
 The initial quiz flow uses:

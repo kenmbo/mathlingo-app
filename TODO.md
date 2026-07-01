@@ -19,11 +19,11 @@ The initial roadmap targets the version 1.0 quiz experience:
 
 ## Current Focus
 
-Milestone 1: Remove the Vite Starter Interface
+Milestone 2: Add Frontend Environment Configuration
 
 Status: Complete
 
-Next: Milestone 2 — Add Frontend Environment Configuration.
+Next: Milestone 3 — Implement Question Response Validation.
 
 ---
 
@@ -149,23 +149,23 @@ Create a documented and safe method for configuring the backend base URL.
 
 ## Tasks
 
-* [ ] Add `.env.example`.
+* [x] Add `.env.example`.
 
-* [ ] Add the variable:
+* [x] Add the variable:
 
   ```text
   VITE_API_BASE_URL=http://127.0.0.1:5000
   ```
 
-* [ ] Confirm local environment files are ignored by Git where appropriate.
+* [x] Confirm local environment files are ignored by Git where appropriate.
 
-* [ ] Add a small configuration module if needed to centralize environment access.
+* [x] Add a small configuration module if needed to centralize environment access.
 
-* [ ] Provide a clear development error when `VITE_API_BASE_URL` is missing.
+* [x] Provide a clear development error when `VITE_API_BASE_URL` is missing.
 
-* [ ] Confirm no backend secrets are present in frontend files.
+* [x] Confirm no backend secrets are present in frontend files.
 
-* [ ] Update documentation only if the implemented behavior differs from the existing instructions.
+* [x] Update documentation only if the implemented behavior differs from the existing instructions.
 
 ## Acceptance Criteria
 
@@ -186,10 +186,10 @@ Create a documented and safe method for configuring the backend base URL.
 
 ## Validation
 
-* [ ] Run `npm run lint`.
-* [ ] Run `npm run build`.
-* [ ] Verify the application with a valid local environment value.
-* [ ] Verify the missing-variable behavior.
+* [x] Run `npm run lint`.
+* [x] Run `npm run build`.
+* [x] Verify the application with a valid local environment value.
+* [x] Verify the missing-variable behavior.
 
 ---
 
