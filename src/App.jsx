@@ -1,6 +1,19 @@
+import { environmentConfig } from './config/environment'
 import './App.css'
 
 function App() {
+  if (!environmentConfig.isValid) {
+    return (
+      <main className="app-shell app-shell--error" aria-labelledby="app-title">
+        <section className="app-intro" role="alert">
+          <p className="eyebrow">Configuration required</p>
+          <h1 id="app-title">MathLingo</h1>
+          <p className="lede">{environmentConfig.errorMessage}</p>
+        </section>
+      </main>
+    )
+  }
+
   return (
     <main className="app-shell" aria-labelledby="app-title">
       <section className="app-intro">

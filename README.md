@@ -123,6 +123,10 @@ Recommended variable:
 VITE_API_BASE_URL=http://127.0.0.1:5000
 ```
 
+Copy `.env.example` to `.env.local` for local development, then adjust the value if the backend runs elsewhere.
+
+If `VITE_API_BASE_URL` is missing, the app shows a startup configuration error instead of continuing with an unknown backend URL.
+
 Vite only exposes frontend environment variables prefixed with `VITE_`. Do not put backend secrets or private API keys in frontend environment files.
 
 ## Backend API Contract
