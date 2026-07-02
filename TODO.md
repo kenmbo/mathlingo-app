@@ -201,27 +201,27 @@ Add lightweight runtime validation for question responses before connecting Reac
 
 ## Tasks
 
-* [ ] Create `src/utils/questionValidation.js`.
-* [ ] Validate that the response is a non-null object.
-* [ ] Validate that `questions` is an array.
-* [ ] Validate every question contains a non-empty string `id`.
-* [ ] Validate `difficulty` is:
+* [x] Create `src/utils/questionValidation.js`.
+* [x] Validate that the response is a non-null object.
+* [x] Validate that `questions` is an array.
+* [x] Validate every question contains a non-empty string `id`.
+* [x] Validate `difficulty` is:
 
   * `easy`
   * `medium`
   * `hard`
-* [ ] Validate `math_subject` is a string.
-* [ ] Validate `question` is a string.
-* [ ] Validate `answer_choice_list` contains exactly four strings.
-* [ ] Validate `answer` is:
+* [x] Validate `math_subject` is a string.
+* [x] Validate `question` is a string.
+* [x] Validate `answer_choice_list` contains exactly four strings.
+* [x] Validate `answer` is:
 
   * `A`
   * `B`
   * `C`
   * `D`
-* [ ] Reject the response as a whole when a required field is invalid.
-* [ ] Return or throw a predictable validation result for the API module to use.
-* [ ] Keep validation functions independent of React.
+* [x] Reject the response as a whole when a required field is invalid.
+* [x] Return or throw a predictable validation result for the API module to use.
+* [x] Keep validation functions independent of React.
 
 ## Acceptance Criteria
 
@@ -247,9 +247,9 @@ Add lightweight runtime validation for question responses before connecting Reac
 
 ## Validation
 
-* [ ] Run `npm run lint`.
-* [ ] Run `npm run build`.
-* [ ] Manually exercise valid and invalid sample objects.
+* [x] Run `npm run lint`.
+* [x] Run `npm run build`.
+* [x] Manually exercise valid and invalid sample objects.
 * [ ] Add automated tests only if the testing milestone has already been completed.
 
 ---
