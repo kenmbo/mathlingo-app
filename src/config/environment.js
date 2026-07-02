@@ -1,4 +1,6 @@
-const apiBaseUrl = import.meta.env.VITE_API_BASE_URL?.trim()
+const viteApiBaseUrl = import.meta.env?.VITE_API_BASE_URL
+const nodeApiBaseUrl = globalThis.process?.env?.VITE_API_BASE_URL
+const apiBaseUrl = (viteApiBaseUrl ?? nodeApiBaseUrl)?.trim()
 
 export function validateEnvironmentConfig() {
   if (!apiBaseUrl) {
