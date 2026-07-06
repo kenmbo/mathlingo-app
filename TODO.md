@@ -20,11 +20,11 @@ The initial roadmap targets the version 1.0 quiz experience:
 
 ## Current Focus
 
-Milestone 3: Implement Question Response Validation
+Milestone 4: Implement the Questions API Module
 
 Status: Complete
 
-Next: Milestone 4 — Implement the Questions API Module.
+Next: Milestone 5 — Build the Quiz Setup Form.
 
 ---
 
@@ -296,9 +296,9 @@ Create a centralized API function for retrieving quiz questions from the backend
 
 ## Tasks
 
-* [ ] Create `src/api/questionsApi.js`.
+* [x] Create `src/api/questionsApi.js`.
 
-* [ ] Implement:
+* [x] Implement:
 
   ```js
   fetchQuestions({
@@ -308,34 +308,34 @@ Create a centralized API function for retrieving quiz questions from the backend
   })
   ```
 
-* [ ] Read the backend base URL from `VITE_API_BASE_URL`.
+* [x] Read the backend base URL from `VITE_API_BASE_URL`.
 
-* [ ] Build the request URL with `URL` and `URLSearchParams`, or an equivalent safe method.
+* [x] Build the request URL with `URL` and `URLSearchParams`, or an equivalent safe method.
 
-* [ ] Send:
+* [x] Send:
 
   ```http
   GET /stream_questions
   ```
 
-* [ ] Include:
+* [x] Include:
 
   * `num_questions`
   * `difficulty`
 
-* [ ] Parse the complete response as JSON.
+* [x] Parse the complete response as JSON.
 
-* [ ] Handle non-successful HTTP responses.
+* [x] Handle non-successful HTTP responses.
 
-* [ ] Extract backend `message` or `error` text when available.
+* [x] Extract backend `message` or `error` text when available.
 
-* [ ] Normalize request failures into a predictable frontend error shape.
+* [x] Normalize request failures into a predictable frontend error shape.
 
-* [ ] Distinguish aborted requests from normal failures.
+* [x] Distinguish aborted requests from normal failures.
 
-* [ ] Pass successful responses through `questionValidation.js`.
+* [x] Pass successful responses through `questionValidation.js`.
 
-* [ ] Keep React state and UI messages out of the API module.
+* [x] Keep React state and UI messages out of the API module.
 
 ## Acceptance Criteria
 
@@ -361,11 +361,11 @@ Create a centralized API function for retrieving quiz questions from the backend
 
 ## Validation
 
-* [ ] Run `npm run lint`.
-* [ ] Run `npm run build`.
-* [ ] Verify request construction with a mocked or local backend.
-* [ ] Verify at least one handled backend error.
-* [ ] Verify malformed response handling.
+* [x] Run `npm run lint`.
+* [x] Run `npm run build`.
+* [x] Verify request construction with a mocked or local backend.
+* [x] Verify at least one handled backend error.
+* [x] Verify malformed response handling.
 
 ---
 
