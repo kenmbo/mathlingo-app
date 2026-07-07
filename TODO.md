@@ -344,7 +344,7 @@ Allow the user to select a difficulty and number of questions before beginning a
 ## Tasks
 
 * [x] Create `src/components/quiz/QuizSetup.jsx`.
-* [ ] Add difficulty controls for:
+* [x] Add difficulty controls for:
 
   * Easy
   * Medium
@@ -355,12 +355,12 @@ Allow the user to select a difficulty and number of questions before beginning a
   * Difficulty: `medium`
   * Number of questions: `10`
 * [x] Associate visible labels with every form control.
-* [ ] Validate values before submitting.
-* [ ] Display a clear validation message for invalid question counts.
-* [ ] Expose the selected configuration through an `onStart` callback.
-* [ ] Support a disabled or loading state through props.
-* [ ] Prevent duplicate submission while loading.
-* [ ] Ensure the form is usable with a keyboard.
+* [x] Validate values before submitting.
+* [x] Display a clear validation message for invalid question counts.
+* [x] Expose the selected configuration through an `onStart` callback.
+* [x] Support a disabled or loading state through props.
+* [x] Prevent duplicate submission while loading.
+* [x] Ensure the form is usable with a keyboard.
 
 ## Acceptance Criteria
 
@@ -389,10 +389,10 @@ Allow the user to select a difficulty and number of questions before beginning a
 
 * [x] Run `npm run lint`.
 * [x] Run `npm run build`.
-* [ ] Test each valid difficulty.
-* [ ] Test question counts `1` and `20`.
-* [ ] Test invalid values such as `0`, `21`, decimals, and empty input.
-* [ ] Complete the form using only the keyboard.
+* [x] Test each valid difficulty.
+* [x] Test question counts `1` and `20`.
+* [x] Test invalid values such as `0`, `21`, decimals, and empty input.
+* [x] Complete the form using only the keyboard.
 
 ---
 
