@@ -20,11 +20,11 @@ The initial roadmap targets the version 1.0 quiz experience:
 
 ## Current Focus
 
-Milestone 5: Build the Quiz Setup Form
+Milestone 6: Implement Quiz Session State
 
 Status: Complete
 
-Next: Milestone 6 — Implement Quiz Session State.
+Next: Milestone 7 — Render the Active Quiz Question.
 
 ---
 
@@ -438,28 +438,28 @@ Create one state-management boundary for the complete in-memory quiz session.
 
 ## Tasks
 
-* [ ] Create `src/hooks/useQuizSession.js`.
-* [ ] Represent the session statuses:
+* [x] Create `src/hooks/useQuizSession.js`.
+* [x] Represent the session statuses:
 
   * `idle`
   * `loading`
   * `active`
   * `completed`
   * `error`
-* [ ] Store the selected session configuration.
-* [ ] Store loaded questions.
-* [ ] Store the current question index.
-* [ ] Store answer records keyed by question ID.
-* [ ] Store normalized request errors.
-* [ ] Implement a session-start action that calls `fetchQuestions`.
-* [ ] Use `AbortController` for active requests.
-* [ ] Ignore aborted requests when setting user-facing errors.
-* [ ] Implement answer selection or submission state.
-* [ ] Prevent the same question from being scored more than once.
-* [ ] Implement progression to the next question.
-* [ ] Complete the session after the final question.
-* [ ] Implement session reset.
-* [ ] Derive rather than duplicate:
+* [x] Store the selected session configuration.
+* [x] Store loaded questions.
+* [x] Store the current question index.
+* [x] Store answer records keyed by question ID.
+* [x] Store normalized request errors.
+* [x] Implement a session-start action that calls `fetchQuestions`.
+* [x] Use `AbortController` for active requests.
+* [x] Ignore aborted requests when setting user-facing errors.
+* [x] Implement answer selection or submission state.
+* [x] Prevent the same question from being scored more than once.
+* [x] Implement progression to the next question.
+* [x] Complete the session after the final question.
+* [x] Implement session reset.
+* [x] Derive rather than duplicate:
 
   * Current question
   * Total question count
@@ -494,14 +494,14 @@ Create one state-management boundary for the complete in-memory quiz session.
 
 ## Validation
 
-* [ ] Run `npm run lint`.
-* [ ] Run `npm run build`.
-* [ ] Verify the happy-path state transitions.
-* [ ] Verify request failure behavior.
-* [ ] Verify empty-result behavior.
-* [ ] Verify duplicate answer submission does not change the score twice.
-* [ ] Verify the final question completes the session.
-* [ ] Verify reset behavior.
+* [x] Run `npm run lint`.
+* [x] Run `npm run build`.
+* [x] Verify the happy-path state transitions.
+* [x] Verify request failure behavior.
+* [x] Verify empty-result behavior.
+* [x] Verify duplicate answer submission does not change the score twice.
+* [x] Verify the final question completes the session.
+* [x] Verify reset behavior.
 
 ---
 

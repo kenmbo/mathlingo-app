@@ -389,13 +389,13 @@ Persistent saving is not part of the initial version.
 
 The quiz session should be managed in one location rather than distributed across several unrelated components.
 
-A custom hook is the preferred initial boundary:
+The initial session boundary is implemented as a custom hook:
 
 ```text
 src/hooks/useQuizSession.js
 ```
 
-For a small first implementation, the hook may use `useState`. If transitions become difficult to reason about, replace the related state variables with `useReducer`.
+The hook uses `useReducer` so loading, request replacement, answer submission, duplicate-scoring prevention, and completion transitions stay explicit.
 
 Suggested state model:
 
@@ -424,6 +424,8 @@ active
 completed
 error
 ```
+
+Empty successful question responses keep the required status set unchanged. The hook exposes an `isEmptyResult` derived flag so later UI can distinguish an empty success from an ordinary request failure.
 
 Suggested answer record:
 
