@@ -1,4 +1,5 @@
 import { environmentConfig } from './config/environment'
+import QuizSetup from './components/quiz/QuizSetup'
 import './App.css'
 
 function App() {
@@ -24,13 +25,9 @@ function App() {
           feedback, and steady session progress.
         </p>
 
-        <div className="quiz-placeholder" aria-label="Upcoming quiz interface">
-          <h2>Quiz workspace</h2>
-          <p>
-            Questions, answer choices, feedback, and progress will appear here
-            as the practice experience takes shape.
-          </p>
-        </div>
+        <section className="quiz-workspace" aria-label="Quiz setup">
+          <QuizSetup />
+        </section>
       </section>
     </main>
   )

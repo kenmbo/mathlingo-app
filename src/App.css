@@ -28,15 +28,14 @@
   font-size: 1.125rem;
 }
 
-.quiz-placeholder {
+.quiz-workspace {
   margin-top: 48px;
   padding-top: 28px;
   border-top: 1px solid var(--border);
 }
 
-.quiz-placeholder p {
+.quiz-workspace p {
   max-width: 520px;
-  color: var(--text-muted);
 }
 
 @media (max-width: 640px) {
@@ -49,7 +48,7 @@
     font-size: 1rem;
   }
 
-  .quiz-placeholder {
+  .quiz-workspace {
     margin-top: 36px;
     padding-top: 24px;
   }

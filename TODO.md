@@ -343,18 +343,18 @@ Allow the user to select a difficulty and number of questions before beginning a
 
 ## Tasks
 
-* [ ] Create `src/components/quiz/QuizSetup.jsx`.
+* [x] Create `src/components/quiz/QuizSetup.jsx`.
 * [ ] Add difficulty controls for:
 
   * Easy
   * Medium
   * Hard
-* [ ] Add a question-count control accepting integers from `1` through `20`.
-* [ ] Choose documented defaults:
+* [x] Add a question-count control accepting integers from `1` through `20`.
+* [x] Choose documented defaults:
 
   * Difficulty: `medium`
   * Number of questions: `10`
-* [ ] Associate visible labels with every form control.
+* [x] Associate visible labels with every form control.
 * [ ] Validate values before submitting.
 * [ ] Display a clear validation message for invalid question counts.
 * [ ] Expose the selected configuration through an `onStart` callback.
@@ -387,8 +387,8 @@ Allow the user to select a difficulty and number of questions before beginning a
 
 ## Validation
 
-* [ ] Run `npm run lint`.
-* [ ] Run `npm run build`.
+* [x] Run `npm run lint`.
+* [x] Run `npm run build`.
 * [ ] Test each valid difficulty.
 * [ ] Test question counts `1` and `20`.
 * [ ] Test invalid values such as `0`, `21`, decimals, and empty input.
