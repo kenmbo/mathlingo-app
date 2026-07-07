@@ -1,0 +1,118 @@
+.quiz-question {
+  display: grid;
+  gap: 24px;
+  max-width: 680px;
+}
+
+.quiz-question__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.quiz-question__meta span {
+  padding: 4px 10px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.quiz-question h2 {
+  max-width: 680px;
+  margin: 0;
+  font-size: 1.5rem;
+  line-height: 1.25;
+}
+
+.answer-list {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.answer-list legend {
+  margin-bottom: 10px;
+  color: var(--text);
+  font-weight: 700;
+}
+
+.answer-list__choices {
+  display: grid;
+  gap: 12px;
+}
+
+.answer-choice {
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--bg) 78%, white);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.answer-choice[data-selected='true'] {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+
+.answer-choice:has(input:focus-visible),
+.quiz-question__actions button:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--accent) 70%, white);
+  outline-offset: 2px;
+}
+
+.answer-choice input {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+  margin: 0;
+  accent-color: var(--accent);
+}
+
+.answer-choice span {
+  overflow-wrap: anywhere;
+}
+
+.quiz-question__actions {
+  display: flex;
+}
+
+.quiz-question__actions button {
+  min-height: 46px;
+  padding: 11px 18px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--accent);
+  color: white;
+  font: inherit;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.quiz-question__actions button:hover:not(:disabled) {
+  filter: brightness(0.94);
+}
+
+.quiz-question__actions button:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+@media (max-width: 640px) {
+  .quiz-question h2 {
+    font-size: 1.25rem;
+  }
+
+  .quiz-question__actions button {
+    width: 100%;
+  }
+}
+
