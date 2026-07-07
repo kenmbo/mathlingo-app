@@ -20,11 +20,11 @@ The initial roadmap targets the version 1.0 quiz experience:
 
 ## Current Focus
 
-Milestone 4: Implement the Questions API Module
+Milestone 5: Build the Quiz Setup Form
 
 Status: Complete
 
-Next: Milestone 5 — Build the Quiz Setup Form.
+Next: Milestone 6 — Implement Quiz Session State.
 
 ---
 
@@ -377,24 +377,24 @@ Allow the user to select a difficulty and number of questions before beginning a
 
 ## Tasks
 
-* [ ] Create `src/components/quiz/QuizSetup.jsx`.
-* [ ] Add difficulty controls for:
+* [x] Create `src/components/quiz/QuizSetup.jsx`.
+* [x] Add difficulty controls for:
 
   * Easy
   * Medium
   * Hard
-* [ ] Add a question-count control accepting integers from `1` through `20`.
-* [ ] Choose documented defaults:
+* [x] Add a question-count control accepting integers from `1` through `20`.
+* [x] Choose documented defaults:
 
   * Difficulty: `medium`
   * Number of questions: `10`
-* [ ] Associate visible labels with every form control.
-* [ ] Validate values before submitting.
-* [ ] Display a clear validation message for invalid question counts.
-* [ ] Expose the selected configuration through an `onStart` callback.
-* [ ] Support a disabled or loading state through props.
-* [ ] Prevent duplicate submission while loading.
-* [ ] Ensure the form is usable with a keyboard.
+* [x] Associate visible labels with every form control.
+* [x] Validate values before submitting.
+* [x] Display a clear validation message for invalid question counts.
+* [x] Expose the selected configuration through an `onStart` callback.
+* [x] Support a disabled or loading state through props.
+* [x] Prevent duplicate submission while loading.
+* [x] Ensure the form is usable with a keyboard.
 
 ## Acceptance Criteria
 
@@ -421,12 +421,12 @@ Allow the user to select a difficulty and number of questions before beginning a
 
 ## Validation
 
-* [ ] Run `npm run lint`.
-* [ ] Run `npm run build`.
-* [ ] Test each valid difficulty.
-* [ ] Test question counts `1` and `20`.
-* [ ] Test invalid values such as `0`, `21`, decimals, and empty input.
-* [ ] Complete the form using only the keyboard.
+* [x] Run `npm run lint`.
+* [x] Run `npm run build`.
+* [x] Test each valid difficulty.
+* [x] Test question counts `1` and `20`.
+* [x] Test invalid values such as `0`, `21`, decimals, and empty input.
+* [x] Complete the form using only the keyboard.
 
 ---
 
