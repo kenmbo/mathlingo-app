@@ -20,11 +20,11 @@ The initial roadmap targets the version 1.0 quiz experience:
 
 ## Current Focus
 
-Milestone 6: Implement Quiz Session State
+Milestone 7: Render the Active Quiz Question
 
 Status: Complete
 
-Next: Milestone 7 — Render the Active Quiz Question.
+Next: Milestone 8 — Add Submitted-Answer Feedback.
 
 ---
 
@@ -513,24 +513,24 @@ Display the active question and its four answer choices using focused components
 
 ## Tasks
 
-* [ ] Create `src/components/quiz/QuizQuestion.jsx`.
-* [ ] Create `src/components/quiz/AnswerList.jsx`.
-* [ ] Create `src/components/quiz/AnswerChoice.jsx`.
-* [ ] Display:
+* [x] Create `src/components/quiz/QuizQuestion.jsx`.
+* [x] Create `src/components/quiz/AnswerList.jsx`.
+* [x] Create `src/components/quiz/AnswerChoice.jsx`.
+* [x] Display:
 
   * Math subject
   * Difficulty
   * Question prompt
   * Four answer choices
-* [ ] Derive choice letters from their array positions.
-* [ ] Preserve the choice text returned by the backend.
-* [ ] Use semantic form controls or buttons.
-* [ ] Allow the user to select an answer without immediately scoring it.
-* [ ] Expose the selected answer to the session coordinator.
-* [ ] Add a separate submit-answer action.
-* [ ] Disable submission until an answer is selected.
-* [ ] Keep session and request state outside presentational components.
-* [ ] Provide a meaningful accessible group label for the question and choices.
+* [x] Derive choice letters from their array positions.
+* [x] Preserve the choice text returned by the backend.
+* [x] Use semantic form controls or buttons.
+* [x] Allow the user to select an answer without immediately scoring it.
+* [x] Expose the selected answer to the session coordinator.
+* [x] Add a separate submit-answer action.
+* [x] Disable submission until an answer is selected.
+* [x] Keep session and request state outside presentational components.
+* [x] Provide a meaningful accessible group label for the question and choices.
 
 ## Acceptance Criteria
 
@@ -557,12 +557,12 @@ Display the active question and its four answer choices using focused components
 
 ## Validation
 
-* [ ] Run `npm run lint`.
-* [ ] Run `npm run build`.
-* [ ] Render a question using fixture data.
+* [x] Run `npm run lint`.
+* [x] Run `npm run build`.
+* [x] Render a question using fixture data.
 * [ ] Select each answer using a mouse.
 * [ ] Select and submit an answer using only the keyboard.
-* [ ] Verify that no answer is scored before explicit submission.
+* [x] Verify that no answer is scored before explicit submission.
 
 ---
 
