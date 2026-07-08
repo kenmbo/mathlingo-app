@@ -20,11 +20,11 @@ The initial roadmap targets the version 1.0 quiz experience:
 
 ## Current Focus
 
-Milestone 7: Render the Active Quiz Question
+Milestone 8: Add Submitted-Answer Feedback
 
 Status: Complete
 
-Next: Milestone 8 — Add Submitted-Answer Feedback.
+Next: Milestone 9 — Add Quiz Header and Progress.
 
 ---
 
@@ -574,16 +574,16 @@ Show clear correct or incorrect feedback after the user explicitly submits an an
 
 ## Tasks
 
-* [ ] Lock the submitted answer for the current question.
-* [ ] Prevent changing the answer after submission.
-* [ ] Show whether the selected answer was correct or incorrect.
-* [ ] Identify the correct answer after submission.
-* [ ] Add text or icons so feedback does not rely only on color.
-* [ ] Announce feedback to assistive technology.
-* [ ] Display a next-question action after feedback.
-* [ ] Display a finish action after feedback on the final question.
-* [ ] Prevent advancing before the answer has been submitted.
-* [ ] Ensure repeated clicks do not score the answer more than once.
+* [x] Lock the submitted answer for the current question.
+* [x] Prevent changing the answer after submission.
+* [x] Show whether the selected answer was correct or incorrect.
+* [x] Identify the correct answer after submission.
+* [x] Add text or icons so feedback does not rely only on color.
+* [x] Announce feedback to assistive technology.
+* [x] Display a next-question action after feedback.
+* [x] Display a finish action after feedback on the final question.
+* [x] Prevent advancing before the answer has been submitted.
+* [x] Ensure repeated clicks do not score the answer more than once.
 
 ## Acceptance Criteria
 
@@ -610,14 +610,14 @@ Show clear correct or incorrect feedback after the user explicitly submits an an
 
 ## Validation
 
-* [ ] Run `npm run lint`.
-* [ ] Run `npm run build`.
-* [ ] Submit a correct answer.
-* [ ] Submit an incorrect answer.
-* [ ] Attempt to change an answer after submission.
-* [ ] Attempt repeated submission.
-* [ ] Verify final-question behavior.
-* [ ] Verify feedback without depending on color.
+* [x] Run `npm run lint`.
+* [x] Run `npm run build`.
+* [x] Submit a correct answer.
+* [x] Submit an incorrect answer.
+* [x] Attempt to change an answer after submission.
+* [x] Attempt repeated submission.
+* [x] Verify final-question behavior.
+* [x] Verify feedback without depending on color.
 
 ---
 
