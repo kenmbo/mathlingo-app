@@ -10,7 +10,6 @@ function App() {
   const isActiveQuestion =
     quizSession.status === QUIZ_SESSION_STATUSES.ACTIVE &&
     Boolean(quizSession.currentQuestion)
-  const selectedAnswer = quizSession.currentAnswerRecord?.selectedAnswer ?? null
 
   if (!environmentConfig.isValid) {
     return (
@@ -40,12 +39,14 @@ function App() {
         >
           {isActiveQuestion ? (
             <QuizQuestion
+              answerRecord={quizSession.currentAnswerRecord}
               hasSelectedAnswer={quizSession.hasSelectedAnswer}
               hasSubmittedAnswer={quizSession.hasSubmittedCurrentAnswer}
+              isFinalQuestion={quizSession.isFinalQuestion}
+              onGoToNextQuestion={quizSession.goToNextQuestion}
               onSelectAnswer={quizSession.selectAnswer}
               onSubmitAnswer={quizSession.submitAnswer}
               question={quizSession.currentQuestion}
-              selectedAnswer={selectedAnswer}
             />
           ) : (
             <QuizSetup
