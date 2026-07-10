@@ -364,8 +364,13 @@ Possible content:
 * Current question number.
 * Total question count.
 * Progress indicator.
-* Current score, when appropriate.
 * Difficulty or subject.
+
+Current implementation:
+
+* Displays question-position progress using values derived by `useQuizSession`.
+* Uses a native `<progress>` element inside `QuizHeader`; a shared `ProgressBar` component is not needed until another screen reuses the pattern.
+* Does not display the current score during the active quiz. Score remains derived in `useQuizSession` for the final summary, keeping active practice focused on the current question and progress through the session.
 
 The timer is not part of the initial architecture unless it enters the active milestone.
 
@@ -738,7 +743,6 @@ The following decisions may be resolved during implementation:
 
 * Whether selected answers can be changed before submission.
 * Whether the session summary includes a full per-question review in version 1.0.
-* Whether score is visible during the active quiz.
 * Whether the quiz setup remains visible after a request error.
 * Whether API response validation remains custom or later uses a schema library.
 * Whether component styles use colocated CSS files or a feature-level stylesheet.
@@ -746,6 +750,10 @@ The following decisions may be resolved during implementation:
 * Whether `/chat` becomes part of the frontend in a later release.
 
 When an open decision is resolved, update this document and the related implementation milestone.
+
+Resolved during Milestone 9:
+
+* The active quiz does not display a live score. The session hook continues deriving `currentScore` for later completion and summary UI.
 
 ---
 

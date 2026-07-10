@@ -20,11 +20,11 @@ The initial roadmap targets the version 1.0 quiz experience:
 
 ## Current Focus
 
-Milestone 8: Add Submitted-Answer Feedback
+Milestone 9: Add Quiz Header and Progress
 
 Status: Complete
 
-Next: Milestone 9 — Add Quiz Header and Progress.
+Next: Milestone 10 — Integrate the Main Quiz Flow.
 
 ---
 
@@ -629,17 +629,17 @@ Show the user where they are within the current quiz session.
 
 ## Tasks
 
-* [ ] Create `src/components/quiz/QuizHeader.jsx`.
-* [ ] Create `src/components/common/ProgressBar.jsx` if a dedicated component is justified.
-* [ ] Display the current question number.
-* [ ] Display the total question count.
-* [ ] Display progress in text.
-* [ ] Add a semantic progress indicator.
-* [ ] Ensure the first question does not display zero progress.
-* [ ] Ensure the final question displays complete question-position progress.
-* [ ] Decide whether the current score is visible during the active quiz.
-* [ ] Document the score-visibility decision in `docs/frontend-architecture.md`.
-* [ ] Keep progress values derived from session state.
+* [x] Create `src/components/quiz/QuizHeader.jsx`.
+* [x] Use a native `<progress>` element in `QuizHeader`; a dedicated `ProgressBar.jsx` is not justified until the pattern is reused.
+* [x] Display the current question number.
+* [x] Display the total question count.
+* [x] Display progress in text.
+* [x] Add a semantic progress indicator.
+* [x] Ensure the first question does not display zero progress.
+* [x] Ensure the final question displays complete question-position progress.
+* [x] Decide whether the current score is visible during the active quiz.
+* [x] Document the score-visibility decision in `docs/frontend-architecture.md`.
+* [x] Keep progress values derived from session state.
 
 ## Acceptance Criteria
 
@@ -664,13 +664,13 @@ Show the user where they are within the current quiz session.
 
 ## Validation
 
-* [ ] Run `npm run lint`.
-* [ ] Run `npm run build`.
-* [ ] Verify progress with a one-question quiz.
-* [ ] Verify progress with a multi-question quiz.
-* [ ] Verify first-question progress.
-* [ ] Verify final-question progress.
-* [ ] Inspect accessible progress semantics.
+* [x] Run `npm run lint`.
+* [x] Run `npm run build`.
+* [x] Verify progress with a one-question quiz.
+* [x] Verify progress with a multi-question quiz.
+* [x] Verify first-question progress.
+* [x] Verify final-question progress.
+* [x] Inspect accessible progress semantics.
 
 ---
 
