@@ -20,11 +20,11 @@ The initial roadmap targets the version 1.0 quiz experience:
 
 ## Current Focus
 
-Milestone 9: Add Quiz Header and Progress
+Milestone 10: Integrate the Main Quiz Flow
 
 Status: Complete
 
-Next: Milestone 10 — Integrate the Main Quiz Flow.
+Next: Milestone 11 — Implement Loading, Empty, and Error States.
 
 ---
 
@@ -682,17 +682,17 @@ Connect quiz setup, API loading, active questions, feedback, progression, and se
 
 ## Tasks
 
-* [ ] Update `App.jsx` to coordinate the primary application states.
-* [ ] Display `QuizSetup` while the session is idle.
-* [ ] Start the session using the setup configuration.
-* [ ] Display loading UI while questions are being requested.
-* [ ] Display the active quiz after successful loading.
-* [ ] Connect answer selection to session state.
-* [ ] Connect answer submission to session state.
-* [ ] Connect next-question and finish actions.
-* [ ] Avoid placing raw request construction in `App.jsx`.
-* [ ] Avoid placing low-level answer-choice rendering in `App.jsx`.
-* [ ] Verify a complete quiz can be finished from beginning to end.
+* [x] Update `App.jsx` to coordinate the primary application states.
+* [x] Display `QuizSetup` while the session is idle.
+* [x] Start the session using the setup configuration.
+* [x] Display loading UI while questions are being requested.
+* [x] Display the active quiz after successful loading.
+* [x] Connect answer selection to session state.
+* [x] Connect answer submission to session state.
+* [x] Connect next-question and finish actions.
+* [x] Avoid placing raw request construction in `App.jsx`.
+* [x] Avoid placing low-level answer-choice rendering in `App.jsx`.
+* [x] Verify a complete quiz can be finished from beginning to end.
 
 ## Acceptance Criteria
 
@@ -719,12 +719,18 @@ Connect quiz setup, API loading, active questions, feedback, progression, and se
 
 ## Validation
 
-* [ ] Run `npm run lint`.
-* [ ] Run `npm run build`.
-* [ ] Complete a one-question quiz.
-* [ ] Complete a multi-question quiz.
-* [ ] Complete a quiz with at least one correct and one incorrect answer.
-* [ ] Start a second quiz without reloading the page.
+* [x] Run `npm run lint`.
+* [x] Run `npm run build`.
+* [x] Complete a one-question quiz.
+* [x] Complete a multi-question quiz.
+* [x] Complete a quiz with at least one correct and one incorrect answer.
+* [x] Start a second quiz without reloading the page.
+
+Validation note: flow-completion scenarios were verified with the live backend
+through the existing API module and exported quiz-session reducer. The setup
+screen was also checked with a headless Firefox screenshot of the running Vite
+app. No browser automation dependency is installed for full click-through UI
+testing.
 
 ---
 
