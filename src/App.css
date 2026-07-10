@@ -38,6 +38,11 @@
   max-width: 520px;
 }
 
+.active-quiz {
+  display: grid;
+  gap: 28px;
+}
+
 @media (max-width: 640px) {
   .app-shell {
     align-items: flex-start;

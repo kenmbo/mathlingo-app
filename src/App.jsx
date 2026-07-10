@@ -1,5 +1,6 @@
 import { environmentConfig } from './config/environment'
 import QuizSetup from './components/quiz/QuizSetup'
+import QuizHeader from './components/quiz/QuizHeader'
 import QuizQuestion from './components/quiz/QuizQuestion'
 import useQuizSession, { QUIZ_SESSION_STATUSES } from './hooks/useQuizSession'
 import './App.css'
@@ -38,16 +39,23 @@ function App() {
           aria-label={isActiveQuestion ? 'Active quiz question' : 'Quiz setup'}
         >
           {isActiveQuestion ? (
-            <QuizQuestion
-              answerRecord={quizSession.currentAnswerRecord}
-              hasSelectedAnswer={quizSession.hasSelectedAnswer}
-              hasSubmittedAnswer={quizSession.hasSubmittedCurrentAnswer}
-              isFinalQuestion={quizSession.isFinalQuestion}
-              onGoToNextQuestion={quizSession.goToNextQuestion}
-              onSelectAnswer={quizSession.selectAnswer}
-              onSubmitAnswer={quizSession.submitAnswer}
-              question={quizSession.currentQuestion}
-            />
+            <div className="active-quiz">
+              <QuizHeader
+                currentQuestionIndex={quizSession.currentQuestionIndex}
+                progressPercentage={quizSession.progressPercentage}
+                totalQuestions={quizSession.totalQuestions}
+              />
+              <QuizQuestion
+                answerRecord={quizSession.currentAnswerRecord}
+                hasSelectedAnswer={quizSession.hasSelectedAnswer}
+                hasSubmittedAnswer={quizSession.hasSubmittedCurrentAnswer}
+                isFinalQuestion={quizSession.isFinalQuestion}
+                onGoToNextQuestion={quizSession.goToNextQuestion}
+                onSelectAnswer={quizSession.selectAnswer}
+                onSubmitAnswer={quizSession.submitAnswer}
+                question={quizSession.currentQuestion}
+              />
+            </div>
           ) : (
             <QuizSetup
               isLoading={isLoading}
