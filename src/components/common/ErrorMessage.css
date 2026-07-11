@@ -1,0 +1,82 @@
+.error-message {
+  display: grid;
+  gap: 16px;
+  max-width: 600px;
+  padding: 20px;
+  border: 1px solid #b42318;
+  border-radius: 8px;
+  background: color-mix(in srgb, #b42318 9%, var(--bg));
+}
+
+.error-message__content {
+  display: grid;
+  gap: 8px;
+}
+
+.error-message__content h2 {
+  margin: 0;
+}
+
+.error-message__content p,
+.error-message__details {
+  color: var(--text-muted);
+}
+
+.error-message__details {
+  font-size: 0.9375rem;
+}
+
+.error-message__details summary {
+  width: fit-content;
+  color: var(--text);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.error-message__details p {
+  margin-top: 8px;
+  overflow-wrap: anywhere;
+}
+
+.error-message__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.error-message__actions button {
+  min-height: 46px;
+  padding: 11px 18px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--accent);
+  color: white;
+  font: inherit;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.error-message__actions button:hover {
+  filter: brightness(0.94);
+}
+
+.error-message__actions button:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--accent) 70%, white);
+  outline-offset: 2px;
+}
+
+.error-message__actions .error-message__secondary-action {
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+}
+
+@media (max-width: 640px) {
+  .error-message__actions {
+    display: grid;
+  }
+
+  .error-message__actions button {
+    width: 100%;
+  }
+}

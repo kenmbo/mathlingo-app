@@ -16,6 +16,7 @@ export const QUIZ_SESSION_ACTIONS = Object.freeze({
   SELECT_ANSWER: 'session/selectAnswer',
   SUBMIT_ANSWER: 'session/submitAnswer',
   GO_TO_NEXT_QUESTION: 'session/goToNextQuestion',
+  RETURN_TO_SETUP: 'session/returnToSetup',
   RESET: 'session/reset',
 })
 
@@ -204,6 +205,12 @@ export function quizSessionReducer(state, action) {
     case QUIZ_SESSION_ACTIONS.GO_TO_NEXT_QUESTION:
       return goToNextQuestion(state)
 
+    case QUIZ_SESSION_ACTIONS.RETURN_TO_SETUP:
+      return {
+        ...createInitialQuizSessionState(),
+        config: state.config,
+      }
+
     case QUIZ_SESSION_ACTIONS.RESET:
       return createInitialQuizSessionState()
 
@@ -255,6 +262,10 @@ function useQuizSession() {
   })
 
   const startSession = useCallback(async (config) => {
+    if (requestRef.current.controller) {
+      return
+    }
+
     requestRef.current.controller?.abort()
 
     const requestId = requestRef.current.requestId + 1
@@ -341,6 +352,18 @@ function useQuizSession() {
     })
   }, [])
 
+  const returnToSetup = useCallback(() => {
+    requestRef.current.controller?.abort()
+    requestRef.current = {
+      requestId: requestRef.current.requestId + 1,
+      controller: null,
+    }
+
+    dispatch({
+      type: QUIZ_SESSION_ACTIONS.RETURN_TO_SETUP,
+    })
+  }, [])
+
   useEffect(() => {
     return () => {
       requestRef.current.controller?.abort()
@@ -352,6 +375,13 @@ function useQuizSession() {
   }, [])
 
   const derivedValues = deriveQuizSessionValues(state)
+  const retryLastRequest = useCallback(() => {
+    if (!state.config) {
+      return
+    }
+
+    startSession(state.config)
+  }, [startSession, state.config])
 
   return {
     status: state.status,
@@ -365,6 +395,8 @@ function useQuizSession() {
     selectAnswer: selectAnswerForCurrentQuestion,
     submitAnswer: submitAnswerForCurrentQuestion,
     goToNextQuestion,
+    retryLastRequest,
+    returnToSetup,
     resetSession,
   }
 }
