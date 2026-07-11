@@ -19,11 +19,11 @@ The initial roadmap targets the version 1.0 quiz experience:
 
 ## Current Focus
 
-Milestone 10
+Milestone 11
 
 Status: Complete
 
-Next: Milestone 11
+Next: Milestone 12
 
 ---
 
@@ -708,18 +708,18 @@ Provide clear recovery behavior for every question-request outcome.
 
 ## Tasks
 
-* [ ] Create `src/components/common/LoadingIndicator.jsx`.
-* [ ] Create `src/components/common/ErrorMessage.jsx`.
-* [ ] Add a dedicated empty-result state.
-* [ ] Display a stable loading layout.
-* [ ] Disable duplicate quiz-start requests while loading.
-* [ ] Map normalized API errors to user-friendly messages.
-* [ ] Provide a retry action when appropriate.
-* [ ] Provide a return-to-setup action.
-* [ ] Preserve or restore the last selected configuration when useful.
-* [ ] Ensure aborted requests do not display an error.
-* [ ] Ensure stale questions are not displayed during a replacement request.
-* [ ] Avoid exposing stack traces or sensitive technical details in production UI.
+* [x] Create `src/components/common/LoadingIndicator.jsx`.
+* [x] Create `src/components/common/ErrorMessage.jsx`.
+* [x] Add a dedicated empty-result state.
+* [x] Display a stable loading layout.
+* [x] Disable duplicate quiz-start requests while loading.
+* [x] Map normalized API errors to user-friendly messages.
+* [x] Provide a retry action when appropriate.
+* [x] Provide a return-to-setup action.
+* [x] Preserve or restore the last selected configuration when useful.
+* [x] Ensure aborted requests do not display an error.
+* [x] Ensure stale questions are not displayed during a replacement request.
+* [x] Avoid exposing stack traces or sensitive technical details in production UI.
 
 ## Acceptance Criteria
 
@@ -747,16 +747,22 @@ Provide clear recovery behavior for every question-request outcome.
 
 ## Validation
 
-* [ ] Run `npm run lint`.
-* [ ] Run `npm run build`.
-* [ ] Verify loading behavior.
-* [ ] Verify empty-success behavior.
-* [ ] Verify a network failure.
-* [ ] Verify a backend validation error.
-* [ ] Verify a backend service error.
-* [ ] Verify retry behavior.
-* [ ] Verify return-to-setup behavior.
-* [ ] Verify request-abort behavior.
+* [x] Run `npm run lint`.
+* [x] Run `npm run build`.
+* [x] Verify loading behavior.
+* [x] Verify empty-success behavior.
+* [x] Verify a network failure.
+* [x] Verify a backend validation error.
+* [x] Verify a backend service error.
+* [x] Verify retry behavior.
+* [x] Verify return-to-setup behavior.
+* [x] Verify request-abort behavior.
+
+Validation note: normal successful requests were verified against the live local
+backend at `http://127.0.0.1:5000/stream_questions?num_questions=5&difficulty=medium`.
+Edge states were verified with temporary Playwright route interception in the
+browser so no fixture fallback, debug controls, or forced-error code remains in
+production.
 
 ---
 
