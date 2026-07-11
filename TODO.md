@@ -596,7 +596,7 @@ Show the user where they are within the current quiz session.
 ## Tasks
 
 * [x] Create `src/components/quiz/QuizHeader.jsx`.
-* [x] Create `src/components/common/ProgressBar.jsx` if a dedicated component is justified.
+* [x] Use a native `<progress>` element in `QuizHeader`; a dedicated `ProgressBar.jsx` is not justified until the pattern is reused.
 * [x] Display the current question number.
 * [x] Display the total question count.
 * [x] Display progress in text.
