@@ -9,12 +9,15 @@ import './QuizSetup.css'
 
 function QuizSetup({
   onStart = () => undefined,
+  initialConfig = null,
   isLoading = false,
   isDisabled = false,
 }) {
-  const [difficulty, setDifficulty] = useState(QUIZ_SETUP_DEFAULTS.difficulty)
+  const initialDifficulty = initialConfig?.difficulty ?? QUIZ_SETUP_DEFAULTS.difficulty
+  const initialNumQuestions = initialConfig?.numQuestions ?? QUIZ_SETUP_DEFAULTS.numQuestions
+  const [difficulty, setDifficulty] = useState(initialDifficulty)
   const [numQuestions, setNumQuestions] = useState(
-    String(QUIZ_SETUP_DEFAULTS.numQuestions),
+    String(initialNumQuestions),
   )
   const [countError, setCountError] = useState('')
   const countInputId = useId()
