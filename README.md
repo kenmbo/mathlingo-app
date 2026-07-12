@@ -14,7 +14,7 @@ The codebase started from the React + Vite scaffold:
 npm create vite@latest mathlingo-app -- --template react
 ```
 
-The default Vite demonstration interface has been replaced with a minimal MathLingo application shell. The first quiz setup form, in-memory quiz session hook, active-question rendering components, submitted-answer feedback, next/finish controls, and active quiz progress header are available, while summary and final visual design are still pending future milestones.
+The default Vite demonstration interface has been replaced with a minimal MathLingo application shell. The first quiz setup form, in-memory quiz session hook, active-question rendering components, submitted-answer feedback, next/finish controls, active quiz progress header, and completed-session summary are available, while final visual design is still pending a future milestone.
 
 ## Release Goal
 

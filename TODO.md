@@ -20,11 +20,11 @@ The initial roadmap targets the version 1.0 quiz experience:
 
 ## Current Focus
 
-Milestone 11: Implement Loading, Empty, and Error States
+Milestone 12: Implement the Session Summary
 
 Status: Complete
 
-Next: Milestone 12 — Implement the Session Summary.
+Next: Milestone 13 — Responsive Layout and Visual Foundation.
 
 ---
 
@@ -808,27 +808,27 @@ Show the final result for the completed in-memory quiz session.
 
 ## Tasks
 
-* [ ] Create `src/components/quiz/QuizSummary.jsx`.
-* [ ] Display the number of correct answers.
-* [ ] Display the total number of questions.
-* [ ] Display the percentage score.
-* [ ] Handle zero-question defensive cases without dividing by zero.
-* [ ] Add a start-another-quiz action.
-* [ ] Calculate subject-level summary totals from current session questions and answers.
-* [ ] Display correct answers by math subject.
-* [ ] Handle missing or empty `math_subject` values with an “Uncategorized” fallback.
-* [ ] Include a simple version 1.0 per-question review.
-* [ ] In the review, display each question, subject, difficulty, selected answer, correct answer, and correctness status.
-* [ ] Ensure the review is read-only and does not allow submitted answers to be changed.
-* [ ] Defer AI-generated explanations to future work.
-* [ ] Document the review decision in `docs/frontend-architecture.md`.
-* [ ] If review is included:
+* [x] Create `src/components/quiz/QuizSummary.jsx`.
+* [x] Display the number of correct answers.
+* [x] Display the total number of questions.
+* [x] Display the percentage score.
+* [x] Handle zero-question defensive cases without dividing by zero.
+* [x] Add a start-another-quiz action.
+* [x] Calculate subject-level summary totals from current session questions and answers.
+* [x] Display correct answers by math subject.
+* [x] Handle missing or empty `math_subject` values with an “Uncategorized” fallback.
+* [x] Include a simple version 1.0 per-question review.
+* [x] In the review, display each question, subject, difficulty, selected answer, correct answer, and correctness status.
+* [x] Ensure the review is read-only and does not allow submitted answers to be changed.
+* [x] Defer AI-generated explanations to future work.
+* [x] Document the review decision in `docs/frontend-architecture.md`.
+* [x] If review is included:
 
   * Display each question.
   * Display the selected answer.
   * Display the correct answer.
   * Display whether the response was correct.
-* [ ] Keep the summary based only on current in-memory session data.
+* [x] Keep the summary based only on current in-memory session data.
 
 ## Acceptance Criteria
 
@@ -865,13 +865,21 @@ Show the final result for the completed in-memory quiz session.
 
 ## Validation
 
-* [ ] Run `npm run lint`.
-* [ ] Run `npm run build`.
-* [ ] Complete a quiz with a perfect score.
-* [ ] Complete a quiz with a zero score.
-* [ ] Complete a quiz with a mixed score.
-* [ ] Start another quiz from the summary.
-* [ ] Verify the documented review decision matches the implementation.
+* [x] Run `npm run lint`.
+* [x] Run `npm run build`.
+* [x] Complete a quiz with a perfect score.
+* [x] Complete a quiz with a zero score.
+* [x] Complete a quiz with a mixed score.
+* [x] Start another quiz from the summary.
+* [x] Verify the documented review decision matches the implementation.
+
+Validation note: perfect, zero, and mixed quiz summaries were verified through a
+headless Playwright pass against the running Vite app with `/stream_questions`
+route interception, so no backend persistence or new API behavior was involved.
+Subject breakdown, per-question review content, and the start-another-quiz path
+were checked in that UI pass. The defensive zero-question case was verified with
+the pure scoring helper because a completed empty quiz is not reachable through
+the normal UI flow.
 
 ---
 

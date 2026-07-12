@@ -378,15 +378,22 @@ The timer is not part of the initial architecture unless it enters the active mi
 
 `QuizSummary` displays the final result for the current in-memory session.
 
-Possible content:
+Version 1.0 content:
 
 * Number of correct answers.
 * Total number of questions.
 * Percentage score.
-* Per-question review.
+* Subject-level correct/total counts grouped by `math_subject`.
+* A simple read-only per-question review.
 * Action to start another quiz.
 
-Persistent saving is not part of the initial version.
+The version 1.0 review is derived only from the completed in-memory session. It
+displays the question text, math subject, difficulty, selected answer, correct
+answer, and whether the submitted response was correct or incorrect.
+
+Version 1.0 does not include AI-generated explanations, a ChatGPT review call,
+backend-generated review feedback, or persistent review history. Persistent
+saving is not part of the initial version.
 
 ---
 
@@ -742,7 +749,6 @@ These items may appear in `TODO.md` under future work.
 The following decisions may be resolved during implementation:
 
 * Whether selected answers can be changed before submission.
-* Whether the session summary includes a full per-question review in version 1.0.
 * Whether the quiz setup remains visible after a request error.
 * Whether API response validation remains custom or later uses a schema library.
 * Whether component styles use colocated CSS files or a feature-level stylesheet.
@@ -754,6 +760,11 @@ When an open decision is resolved, update this document and the related implemen
 Resolved during Milestone 9:
 
 * The active quiz does not display a live score. The session hook continues deriving `currentScore` for later completion and summary UI.
+
+Resolved during Milestone 12:
+
+* Version 1.0 includes a simple read-only per-question review derived from the completed in-memory session.
+* Version 1.0 does not include AI-generated explanations, ChatGPT review calls, backend review endpoints, or persistent review history.
 
 ---
 

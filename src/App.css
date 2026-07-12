@@ -92,10 +92,6 @@
   outline-offset: 2px;
 }
 
-.quiz-state--completed {
-  border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
-}
-
 .quiz-state--empty {
   border-color: color-mix(in srgb, var(--accent) 36%, var(--border));
 }
