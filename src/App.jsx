@@ -7,16 +7,9 @@ import ErrorMessage from './components/common/ErrorMessage'
 import QuizSetup from './components/quiz/QuizSetup'
 import QuizHeader from './components/quiz/QuizHeader'
 import QuizQuestion from './components/quiz/QuizQuestion'
+import QuizSummary from './components/quiz/QuizSummary'
 import useQuizSession, { QUIZ_SESSION_STATUSES } from './hooks/useQuizSession'
 import './App.css'
-
-function formatPercentageScore(score) {
-  if (!Number.isFinite(score)) {
-    return '0%'
-  }
-
-  return `${Math.round(score)}%`
-}
 
 function getQuestionRequestErrorMessage(error) {
   if (error?.code === QUESTION_API_ERROR_CODES.NETWORK_ERROR) {
@@ -179,17 +172,11 @@ function App() {
               />
             </div>
           ) : isCompleted ? (
-            <section className="quiz-state quiz-state--completed">
-              <h2>Quiz complete</h2>
-              <p>
-                You answered {quizSession.currentScore} of{' '}
-                {quizSession.totalQuestions} questions correctly (
-                {formatPercentageScore(quizSession.finalPercentageScore)}).
-              </p>
-              <button onClick={quizSession.resetSession} type="button">
-                Start another quiz
-              </button>
-            </section>
+            <QuizSummary
+              answers={quizSession.answers}
+              onStartAnotherQuiz={quizSession.returnToSetup}
+              questions={quizSession.questions}
+            />
           ) : hasEmptyResult ? (
             <section
               aria-live="polite"
