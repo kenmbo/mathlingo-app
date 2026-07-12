@@ -814,7 +814,13 @@ Show the final result for the completed in-memory quiz session.
 * [ ] Display the percentage score.
 * [ ] Handle zero-question defensive cases without dividing by zero.
 * [ ] Add a start-another-quiz action.
-* [ ] Decide whether version 1.0 includes per-question review.
+* [ ] Calculate subject-level summary totals from current session questions and answers.
+* [ ] Display correct answers by math subject.
+* [ ] Handle missing or empty `math_subject` values with an “Uncategorized” fallback.
+* [ ] Include a simple version 1.0 per-question review.
+* [ ] In the review, display each question, subject, difficulty, selected answer, correct answer, and correctness status.
+* [ ] Ensure the review is read-only and does not allow submitted answers to be changed.
+* [ ] Defer AI-generated explanations to future work.
 * [ ] Document the review decision in `docs/frontend-architecture.md`.
 * [ ] If review is included:
 
@@ -832,6 +838,12 @@ Show the final result for the completed in-memory quiz session.
 * Percentage calculation is accurate.
 * A perfect score displays correctly.
 * A zero score displays correctly.
+* The summary displays the number of correct answers and total questions for each math subject present in the completed session.
+* Subject totals are calculated from the completed in-memory session.
+* Questions with missing or blank `math_subject` values are grouped under `Uncategorized`.
+* The per-question review displays the question, selected answer, correct answer, and correctness status.
+* The review is read-only and does not reopen answer submission.
+* No ChatGPT API call or backend explanation endpoint is added.
 * Starting another quiz returns the user to a usable setup state.
 * The per-question review decision is documented.
 * `npm run lint` succeeds.
@@ -846,6 +858,10 @@ Show the final result for the completed in-memory quiz session.
 * Sharing results.
 * Badges or rewards.
 * Recommendations generated from the score.
+* AI-generated answer explanations.
+* Backend-generated review feedback.
+* Persistent per-question review history.
+* Review filters beyond the simple version 1.0 review.
 
 ## Validation
 
@@ -1211,6 +1227,9 @@ These features are intentionally outside the version 1.0 roadmap. They should be
 * [ ] End-to-end browser tests.
 * [ ] Continuous-integration validation.
 * [ ] Production monitoring and error reporting.
+* [ ] AI-generated explanations for completed questions.
+* [ ] Review-only mode for missed questions.
+* [ ] Personalized study recommendations based on completed quiz results.
 
 ---
 
