@@ -880,7 +880,6 @@ Create a calm, readable quiz layout that works on desktop and mobile without int
 ## Non-Goals
 
 * A full branding system.
-* Dark mode.
 * Theme switching.
 * CSS frameworks.
 * Component libraries.
@@ -1178,7 +1177,7 @@ These features are intentionally outside the version 1.0 roadmap. They should be
 * [ ] Levels.
 * [ ] Study streaks.
 * [ ] Analytics dashboard.
-* [ ] Dark mode.
+* [ ] Dark mode/light mode.
 * [ ] Client-side routing.
 * [ ] Backend completion-record endpoints.
 * [ ] End-to-end browser tests.
