@@ -74,16 +74,17 @@ function QuizQuestion({
         selectedAnswer={selectedAnswer}
       />
 
-      {feedback ? (
-        <div
-          aria-live="polite"
-          className={`quiz-question__feedback quiz-question__feedback--${feedback.tone}`}
-          role="status"
-        >
-          <p className="quiz-question__feedback-title">{feedback.title}</p>
-          <p>{feedback.message}</p>
-        </div>
-      ) : null}
+      <div className="quiz-question__feedback-region" aria-live="polite">
+        {feedback ? (
+          <div
+            className={`quiz-question__feedback quiz-question__feedback--${feedback.tone}`}
+            role="status"
+          >
+            <p className="quiz-question__feedback-title">{feedback.title}</p>
+            <p>{feedback.message}</p>
+          </div>
+        ) : null}
+      </div>
 
       <div className="quiz-question__actions">
         {hasSubmittedAnswer ? (

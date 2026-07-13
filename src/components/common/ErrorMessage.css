@@ -1,16 +1,21 @@
 .error-message {
+  width: 100%;
+  min-width: 0;
   display: grid;
-  gap: 16px;
-  max-width: 600px;
-  padding: 20px;
-  border: 1px solid #b42318;
-  border-radius: 8px;
-  background: color-mix(in srgb, #b42318 9%, var(--bg));
+  gap: var(--space-4);
+  max-width: var(--narrow-content-max-width);
+  padding: var(--space-5);
+  border: var(--border-width) solid var(--color-incorrect-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-incorrect-surface);
+  box-shadow: var(--surface-shadow);
+  overflow-wrap: anywhere;
 }
 
 .error-message__content {
   display: grid;
-  gap: 8px;
+  gap: var(--space-2);
+  min-width: 0;
 }
 
 .error-message__content h2 {
@@ -19,56 +24,73 @@
 
 .error-message__content p,
 .error-message__details {
-  color: var(--text-muted);
+  color: var(--color-text-muted);
 }
 
 .error-message__details {
-  font-size: 0.9375rem;
+  min-width: 0;
+  font-size: var(--font-size-sm);
 }
 
 .error-message__details summary {
   width: fit-content;
-  color: var(--text);
+  max-width: 100%;
+  color: var(--color-text-primary);
   cursor: pointer;
-  font-weight: 700;
+  font-weight: var(--font-weight-semibold);
+  overflow-wrap: anywhere;
+}
+
+.error-message__details summary:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
 }
 
 .error-message__details p {
-  margin-top: 8px;
+  margin-top: var(--space-2);
   overflow-wrap: anywhere;
 }
 
 .error-message__actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: var(--space-3);
+  min-width: 0;
 }
 
 .error-message__actions button {
-  min-height: 46px;
-  padding: 11px 18px;
+  min-height: var(--control-min-height);
+  max-width: 100%;
+  padding: var(--control-padding-block) var(--control-padding-inline);
   border: 0;
-  border-radius: 8px;
-  background: var(--accent);
-  color: white;
-  font: inherit;
-  font-weight: 750;
+  border-radius: var(--radius-md);
+  background: var(--color-primary);
+  color: var(--color-text-on-primary);
+  font-weight: var(--font-weight-bold);
+  text-align: center;
+  white-space: normal;
   cursor: pointer;
 }
 
-.error-message__actions button:hover {
-  filter: brightness(0.94);
-}
-
 .error-message__actions button:focus-visible {
-  outline: 3px solid color-mix(in srgb, var(--accent) 70%, white);
-  outline-offset: 2px;
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
 }
 
 .error-message__actions .error-message__secondary-action {
-  border: 1px solid var(--border);
+  border: var(--border-width) solid var(--border-color);
   background: transparent;
-  color: var(--text);
+  color: var(--color-text-primary);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .error-message__actions button:hover {
+    background: var(--color-primary-hover);
+  }
+
+  .error-message__actions .error-message__secondary-action:hover {
+    background: var(--color-interactive-secondary-hover);
+  }
 }
 
 @media (max-width: 640px) {

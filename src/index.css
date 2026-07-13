@@ -1,44 +1,105 @@
 :root {
-  --bg: #f7f9fc;
-  --text: #172033;
-  --text-muted: #5f6f86;
-  --border: #d8e0ea;
-  --accent: #0f766e;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-7: 1.75rem;
+  --space-8: 2rem;
+  --space-9: 2.5rem;
+  --space-10: 3rem;
+  --space-12: 4rem;
 
-  font-family:
-    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    sans-serif;
-  line-height: 1.5;
+  --font-family-base: Inter, ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-size-xs: 0.8125rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-display: 3.25rem;
+  --line-height-tight: 1.12;
+  --line-height-heading: 1.22;
+  --line-height-body: 1.5;
+  --font-weight-medium: 650;
+  --font-weight-semibold: 700;
+  --font-weight-bold: 750;
+  --font-weight-heavy: 800;
+
+  --border-width: 1px;
+  --border-color: #d8e0ea;
+  --border-strong: #b7c5d5;
+  --border-subtle: #e6edf5;
+
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-pill: 999px;
+
+  --color-page-background: #f5f8fc;
+  --color-surface: #ffffff;
+  --color-text-primary: #172033;
+  --color-text-muted: #5f6f86;
+  --color-text-on-primary: #ffffff;
+
+  --color-primary: #0f766e;
+  --color-primary-hover: #0b5f59;
+  --color-interactive-surface: #ffffff;
+  --color-interactive-surface-hover: #f0f7f6;
+  --color-interactive-secondary-hover: #eef3f8;
+  --color-selected-surface: #edf8f6;
+
+  --focus-ring-color: #2563eb;
+  --focus-ring-width: 3px;
+  --focus-ring-offset: 3px;
+
+  --color-correct: #047857;
+  --color-correct-strong: #05603a;
+  --color-correct-surface: #e9f8ef;
+  --color-correct-border: #61b987;
+  --color-incorrect: #b42318;
+  --color-incorrect-strong: #8f1d14;
+  --color-incorrect-surface: #fff0ee;
+  --color-incorrect-border: #f0a39b;
+
+  --content-max-width: 48rem;
+  --question-content-max-width: 42.5rem;
+  --narrow-content-max-width: 35rem;
+  --page-padding-block: var(--space-12);
+  --page-padding-inline: var(--space-6);
+  --control-min-height: 3rem;
+  --control-padding-block: 0.75rem;
+  --control-padding-inline: 1.125rem;
+  --choice-min-height: 3.5rem;
+  --surface-shadow: 0 18px 48px rgb(23 32 51 / 0.08);
+
+  font-family: var(--font-family-base);
+  line-height: var(--line-height-body);
   font-weight: 400;
   letter-spacing: 0;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
+  color-scheme: light;
+  color: var(--color-text-primary);
+  background: var(--color-page-background);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #111827;
-    --text: #f3f7fb;
-    --text-muted: #b3c0ce;
-    --border: #314155;
-    --accent: #5eead4;
-  }
 }
 
 * {
   box-sizing: border-box;
 }
 
+html {
+  min-height: 100%;
+  background: var(--color-page-background);
+}
+
 body {
   margin: 0;
-  min-width: 320px;
   min-height: 100svh;
+  background: var(--color-page-background);
 }
 
 #root {
@@ -46,29 +107,57 @@ body {
 }
 
 h1,
-h2 {
-  color: var(--text);
-  line-height: 1.1;
+h2,
+h3 {
+  color: var(--color-text-primary);
+  line-height: var(--line-height-heading);
+  overflow-wrap: anywhere;
 }
 
 h1 {
-  margin: 0 0 20px;
-  font-size: 3.25rem;
-  font-weight: 750;
+  margin: 0 0 var(--space-5);
+  font-size: var(--font-size-display);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
 }
 
 h2 {
-  margin: 0 0 12px;
-  font-size: 1.25rem;
-  font-weight: 700;
+  margin: 0 0 var(--space-3);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+}
+
+h3 {
+  margin: 0;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
 }
 
 p {
   margin: 0;
 }
 
+:where(button, input, summary) {
+  font: inherit;
+  letter-spacing: 0;
+}
+
+:where(p, li, dt, dd, span, strong, label, summary, button) {
+  overflow-wrap: break-word;
+}
+
 @media (max-width: 640px) {
-  h1 {
-    font-size: 2.5rem;
+  :root {
+    --font-size-display: 2.5rem;
+    --page-padding-block: var(--space-9);
+    --page-padding-inline: var(--space-4);
+  }
+}
+
+@media (max-width: 360px) {
+  :root {
+    --font-size-display: 2.25rem;
+    --page-padding-block: var(--space-8);
+    --page-padding-inline: var(--space-3);
   }
 }

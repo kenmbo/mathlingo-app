@@ -20,11 +20,11 @@ The initial roadmap targets the version 1.0 quiz experience:
 
 ## Current Focus
 
-Milestone 12: Implement the Session Summary
+Milestone 13: Responsive Layout and Visual Foundation
 
 Status: Complete
 
-Next: Milestone 13 — Responsive Layout and Visual Foundation.
+Next: Milestone 14 — Accessibility Review.
 
 ---
 
@@ -891,7 +891,7 @@ Create a calm, readable quiz layout that works on desktop and mobile without int
 
 ## Tasks
 
-* [ ] Define reusable CSS custom properties for:
+* [x] Define reusable CSS custom properties for:
 
   * Spacing
   * Typography
@@ -904,16 +904,16 @@ Create a calm, readable quiz layout that works on desktop and mobile without int
   * Focus
   * Correct feedback
   * Incorrect feedback
-* [ ] Set a readable maximum content width.
-* [ ] Make answer controls comfortably sized.
-* [ ] Prevent long question text from overflowing.
-* [ ] Prevent long answer choices from overflowing.
-* [ ] Ensure controls remain usable at narrow viewport widths.
-* [ ] Add visible hover states where appropriate.
-* [ ] Add visible focus states.
-* [ ] Keep layout stable during loading and feedback changes.
-* [ ] Respect reduced-motion preferences if any motion is present.
-* [ ] Remove temporary placeholder styles.
+* [x] Set a readable maximum content width.
+* [x] Make answer controls comfortably sized.
+* [x] Prevent long question text from overflowing.
+* [x] Prevent long answer choices from overflowing.
+* [x] Ensure controls remain usable at narrow viewport widths.
+* [x] Add visible hover states where appropriate.
+* [x] Add visible focus states.
+* [x] Keep layout stable during loading and feedback changes.
+* [x] Respect reduced-motion preferences if any motion is present.
+* [x] Remove temporary placeholder styles.
 
 ## Acceptance Criteria
 
@@ -931,6 +931,7 @@ Create a calm, readable quiz layout that works on desktop and mobile without int
 ## Non-Goals
 
 * A full branding system.
+* Dark mode/light mode themes.
 * Theme switching.
 * CSS frameworks.
 * Component libraries.
@@ -940,14 +941,22 @@ Create a calm, readable quiz layout that works on desktop and mobile without int
 
 ## Validation
 
-* [ ] Run `npm run lint`.
-* [ ] Run `npm run build`.
-* [ ] Check approximately 320-pixel viewport width.
-* [ ] Check a tablet-sized viewport.
-* [ ] Check a desktop viewport.
-* [ ] Test unusually long question text.
-* [ ] Test unusually long choice text.
-* [ ] Inspect hover and focus states.
+* [x] Run `npm run lint`.
+* [x] Run `npm run build`.
+* [x] Check approximately 320-pixel viewport width.
+* [x] Check a tablet-sized viewport.
+* [x] Check a desktop viewport.
+* [x] Test unusually long question text.
+* [x] Test unusually long choice text.
+* [x] Inspect hover and focus states.
+
+Validation note: the responsive pass was run against the local Vite app at
+320, 390, 768, 1280, and 1600 CSS pixel viewport widths with Playwright route
+interception for `/stream_questions`. The pass covered setup, loading, empty,
+error, active quiz, selected answers, incorrect feedback, correct feedback,
+session summary, long question prompts, long answer choices, long subject
+labels, long error details, keyboard focus, hover states, reduced motion, and
+horizontal-overflow checks without calling the real backend.
 
 ---
 
