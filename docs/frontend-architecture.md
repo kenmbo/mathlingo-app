@@ -647,6 +647,12 @@ Example token categories:
 
 Exact visual values should be defined during UI design rather than in this architecture document.
 
+Current implementation:
+
+* Milestone 13 defines the reusable visual foundation in `src/index.css`.
+* Component styles consume those custom properties from their existing CSS files.
+* The current foundation is a single light visual treatment; theme switching is not part of the initial quiz UI.
+
 ---
 
 ## 12. Accessibility Requirements
