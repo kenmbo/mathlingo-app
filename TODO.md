@@ -19,12 +19,16 @@ The initial roadmap targets the version 1.0 quiz experience:
 
 ## Current Focus
 
-Milestone 13
+Milestone 14
 
 Status: Complete
 
-Next: Milestone 14
+Next: Milestone 15
 
+Note: Screen-reader software was not available in this environment. The
+accessibility tree was inspected with Playwright's ARIA snapshot as an
+assistive-technology proxy, and a real screen-reader pass remains recommended
+when one is available.
 ---
 
 ## How to Use This File
@@ -916,27 +920,27 @@ Review and correct the complete quiz flow for keyboard and assistive-technology 
 
 ## Tasks
 
-* [ ] Verify logical heading order.
-* [ ] Verify every setup control has an associated label.
-* [ ] Verify answer choices use appropriate semantic controls.
-* [ ] Verify question and answer groups have useful accessible names.
-* [ ] Verify visible keyboard focus throughout the application.
-* [ ] Verify feedback is not communicated through color alone.
-* [ ] Verify correct and incorrect feedback is announced.
-* [ ] Verify loading changes are announced where appropriate.
-* [ ] Verify error messages are associated with relevant controls or regions.
-* [ ] Verify the progress indicator has accessible semantics.
-* [ ] Review focus behavior when:
+* [x] Verify logical heading order.
+* [x] Verify every setup control has an associated label.
+* [x] Verify answer choices use appropriate semantic controls.
+* [x] Verify question and answer groups have useful accessible names.
+* [x] Verify visible keyboard focus throughout the application.
+* [x] Verify feedback is not communicated through color alone.
+* [x] Verify correct and incorrect feedback is announced.
+* [x] Verify loading changes are announced where appropriate.
+* [x] Verify error messages are associated with relevant controls or regions.
+* [x] Verify the progress indicator has accessible semantics.
+* [x] Review focus behavior when:
 
   * A quiz starts
   * A new question appears
   * Feedback appears
   * The summary appears
   * An error occurs
-* [ ] Verify the interface does not advance before feedback can be reviewed.
-* [ ] Review color contrast.
-* [ ] Review touch-target sizing.
-* [ ] Correct accessibility issues found during the review.
+* [x] Verify the interface does not advance before feedback can be reviewed.
+* [x] Review color contrast.
+* [x] Review touch-target sizing.
+* [x] Correct accessibility issues found during the review.
 
 ## Acceptance Criteria
 
@@ -962,13 +966,23 @@ Review and correct the complete quiz flow for keyboard and assistive-technology 
 
 ## Validation
 
-* [ ] Run `npm run lint`.
-* [ ] Run `npm run build`.
-* [ ] Complete the entire flow using only the keyboard.
-* [ ] Inspect the accessibility tree using browser developer tools.
-* [ ] Test at least one screen-reader flow when available.
-* [ ] Check key text and control color contrast.
-* [ ] Test focus behavior at every major view transition.
+* [x] Run `npm run lint`.
+* [x] Run `npm run build`.
+* [x] Complete the entire flow using only the keyboard.
+* [x] Inspect the accessibility tree using browser developer tools.
+* [!] Test at least one screen-reader flow when available.
+* [x] Check key text and control color contrast.
+* [x] Test focus behavior at every major view transition.
+
+Validation note: the accessibility review was run against the local Vite app
+with Playwright route interception for `/stream_questions`, without calling the
+real backend. The pass covered setup validation, loading, active quiz,
+incorrect feedback, correct feedback, next-question flow, final summary,
+service error, empty result, keyboard-only completion, focus transitions,
+mobile-width horizontal overflow, touch-target sizing, progress semantics, and
+an ARIA accessibility-tree snapshot. Screen-reader software was not available
+in this environment, so a real screen-reader pass remains a follow-up
+recommendation.
 
 ---
 
