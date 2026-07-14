@@ -113,12 +113,17 @@ function QuizQuestion({
 
       <div className="quiz-question__actions">
         {hasSubmittedAnswer ? (
-          <button onClick={onGoToNextQuestion} type="button">
+          <button
+            key="continue-question"
+            onClick={onGoToNextQuestion}
+            type="button"
+          >
             {isFinalQuestion ? 'Finish quiz' : 'Next question'}
           </button>
         ) : (
           <button
             disabled={!hasSelectedAnswer}
+            key="submit-answer"
             onClick={onSubmitAnswer}
             type="button"
           >
