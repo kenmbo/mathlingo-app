@@ -26,11 +26,12 @@ Status: Complete
 
 Next: Milestone 17 — Version 1.0 Release Review.
 
-Note: The App behavior test suite now covers setup validation, mocked API
-request states, answer submission and feedback, answer locking, duplicate
-scoring prevention, progression, summary scoring, retry, and restarting a quiz.
-The tests mock `src/api/questionsApi.js` and do not require the live Flask
-backend.
+Note: The App behavior test suite is split into setup, request-state,
+answer-flow, and summary test files with shared fixtures and helpers under
+`src/test`. It covers setup validation, mocked API request states, answer
+submission and feedback, answer locking, duplicate scoring prevention,
+progression, summary scoring, retry, and restarting a quiz. The tests mock
+`src/api/questionsApi.js` and do not require the live Flask backend.
 
 ---
 
@@ -1162,8 +1163,9 @@ Protect the primary version 1.0 quiz flow with user-centered automated tests.
 * [x] Confirm tests pass without a running backend.
 
 Validation note: `npm run lint`, `npm run build`, and `npm run test` all
-completed successfully. The Vitest suite passed with 26 App behavior tests.
-The tests mock the frontend question API module, so they do not call or require
+completed successfully. The Vitest suite passed with 26 App behavior tests,
+now split across setup, request-state, answer-flow, and summary files. The
+tests mock the frontend question API module, so they do not call or require
 the live Flask backend.
 
 ---
