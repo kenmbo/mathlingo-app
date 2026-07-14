@@ -1,3 +1,4 @@
+import { useEffect, useId, useRef } from 'react'
 import { environmentConfig } from './config/environment'
 import {
   QUESTION_API_ERROR_CODES,
@@ -99,6 +100,9 @@ function getDeveloperErrorDetails(error) {
 }
 
 function App() {
+  const emptyStateHeadingId = useId()
+  const emptyStateMessageId = useId()
+  const emptyStateRef = useRef(null)
   const quizSession = useQuizSession()
   const isLoading = quizSession.status === QUIZ_SESSION_STATUSES.LOADING
   const isCompleted = quizSession.status === QUIZ_SESSION_STATUSES.COMPLETED
@@ -125,13 +129,25 @@ function App() {
             ? 'No questions available'
             : 'Quiz setup'
 
+  useEffect(() => {
+    if (hasEmptyResult) {
+      emptyStateRef.current?.focus()
+    }
+  }, [hasEmptyResult])
+
   if (!environmentConfig.isValid) {
     return (
       <main className="app-shell app-shell--error" aria-labelledby="app-title">
-        <section className="app-intro" role="alert">
+        <section
+          aria-describedby="app-config-error"
+          className="app-intro"
+          role="alert"
+        >
           <p className="eyebrow">Configuration required</p>
           <h1 id="app-title">MathLingo</h1>
-          <p className="lede">{environmentConfig.errorMessage}</p>
+          <p className="lede" id="app-config-error">
+            {environmentConfig.errorMessage}
+          </p>
         </section>
       </main>
     )
@@ -179,12 +195,16 @@ function App() {
             />
           ) : hasEmptyResult ? (
             <section
+              aria-describedby={emptyStateMessageId}
+              aria-labelledby={emptyStateHeadingId}
               aria-live="polite"
               className="quiz-state quiz-state--empty"
+              ref={emptyStateRef}
               role="status"
+              tabIndex={-1}
             >
-              <h2>No questions available</h2>
-              <p>
+              <h2 id={emptyStateHeadingId}>No questions available</h2>
+              <p id={emptyStateMessageId}>
                 The question service responded successfully, but it did not
                 return any questions for this quiz.
               </p>
