@@ -694,6 +694,10 @@ npm run test
 Tests use Vitest, React Testing Library, `@testing-library/user-event`,
 `@testing-library/jest-dom`, and `jsdom`.
 
+The App behavior tests are split into setup, request-state, answer-flow, and
+summary files at the top of `src/`, with shared fixtures and helpers under
+`src/test/`.
+
 Priority test cases:
 
 * Quiz setup validates question count.

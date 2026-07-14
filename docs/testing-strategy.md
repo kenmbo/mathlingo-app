@@ -54,7 +54,10 @@ npm run test
 Place component and hook tests near the code they cover, using names such as:
 
 ```text
-src/App.test.jsx
+src/App.setup.test.jsx
+src/App.requestStates.test.jsx
+src/App.answerFlow.test.jsx
+src/App.summary.test.jsx
 src/components/quiz/QuizSetup.test.jsx
 src/hooks/useQuizSession.test.js
 ```
@@ -64,6 +67,27 @@ utility tests.
 
 Keep shared test helpers under `src/test/` only after duplication appears. Do
 not add broad helper abstractions for a single test.
+
+The current App behavior suite is split by user workflow:
+
+* `src/App.setup.test.jsx` covers the initial setup screen, setup validation,
+  and the selected quiz configuration passed to the API module.
+* `src/App.requestStates.test.jsx` covers loading, successful question
+  rendering, invalid data, empty responses, request errors, and retry.
+* `src/App.answerFlow.test.jsx` covers answer selection, explicit submission,
+  correct and incorrect feedback, answer locking, duplicate scoring
+  prevention, progress, and final-question completion.
+* `src/App.summary.test.jsx` covers final score states and starting another
+  quiz from the summary.
+
+Shared App test utilities live in:
+
+```text
+src/test/utils/appTestUtils.jsx
+```
+
+That helper is for reusable render and interaction helpers only. Keep test
+assertions in the behavior-focused test files so each test remains readable.
 
 ## User-Centered Component Tests
 
@@ -97,10 +121,11 @@ Tests must mock `src/api/questionsApi.js` instead of calling the live Flask
 backend. Mocking the API module keeps tests focused on frontend behavior and
 preserves the app's request boundary.
 
-Example:
+For top-level App behavior tests, define the mock in each test file:
 
 ```js
-import { vi } from 'vitest'
+import { beforeEach, vi } from 'vitest'
+import { fetchQuestions } from './test/utils/appTestUtils.jsx'
 
 vi.mock('./api/questionsApi.js', async () => {
   const actual = await vi.importActual('./api/questionsApi.js')
@@ -110,11 +135,17 @@ vi.mock('./api/questionsApi.js', async () => {
     fetchQuestions: vi.fn(),
   }
 })
+
+beforeEach(() => {
+  fetchQuestions.mockReset()
+})
 ```
 
-Adjust the relative import path to match the test file location. Import the
-mocked `fetchQuestions` in the test when you need to set a resolved or rejected
-value.
+Adjust the relative mock path to match the test file location. Keep the
+`vi.mock` declaration in the test file rather than hiding it in a shared helper;
+that keeps Vitest's module mocking behavior explicit and reliable for every
+split file. Import the mocked `fetchQuestions` when you need to set a resolved
+or rejected value.
 
 Do not mock `fetch` globally when the component under test uses
 `questionsApi.js`; mock the API module instead. Utility tests for
@@ -139,6 +170,26 @@ database credentials, or network access.
 data. Tests can also define smaller inline fixtures when only one or two fields
 matter.
 
+The shared App behavior fixture lives in:
+
+```text
+src/test/fixtures/quizQuestions.js
+```
+
+Keep this fixture aligned with the public question shape documented in
+`docs/api-contract.md`:
+
+```js
+{
+  id: 'question-1',
+  difficulty: 'medium',
+  math_subject: 'Algebra',
+  question: 'What is 3x when x = 4?',
+  answer_choice_list: ['A. 7', 'B. 9', 'C. 12', 'D. 16'],
+  answer: 'C',
+}
+```
+
 Fixture data is example data, not a replacement for `docs/api-contract.md`.
 When response shape expectations change intentionally, update the API contract
 and the relevant fixtures together.
@@ -153,9 +204,9 @@ Milestone 15 includes only:
 * Adding one basic user-visible app-render smoke test.
 * Documenting how contributors should write and run tests.
 
-Milestone 16 is where broad quiz behavior tests belong, including setup
-validation, loading, errors, empty responses, answer selection, submission,
-feedback, progression, summary scoring, retry behavior, and restart behavior.
+Milestone 16 added the broad App behavior suite for setup validation, loading,
+errors, empty responses, answer selection, submission, feedback, progression,
+summary scoring, retry behavior, and restart behavior.
 
 Do not expand Milestone 15 into the Milestone 16 suite.
 
