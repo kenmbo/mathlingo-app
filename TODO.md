@@ -21,7 +21,7 @@ The initial roadmap targets the version 1.0 quiz experience:
 
 Milestone 15
 
-Status: Pending (Checking)
+Status: Complete
 
 Next: Milestone 16
 
@@ -1003,10 +1003,10 @@ Introduce the smallest testing setup needed to verify user-visible quiz behavior
 * [x] Add a test script to `package.json`.
 * [x] Add shared test setup only when needed.
 * [x] Confirm test files are included by the configured runner.
-* [~] Mock the API module rather than the global network where practical.
+* [x] Mock the API module rather than the global network where practical.
 * [x] Do not make live backend or OpenAI requests.
 * [x] Add one basic application-render test.
-* [~] Document the test command in:
+* [x] Document the test command in:
 
   * `README.md`
   * `docs/frontend-architecture.md`
