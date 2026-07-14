@@ -1,3 +1,4 @@
+import { useEffect, useId, useRef } from 'react'
 import { getChoiceTextForAnswerLetter } from '../../utils/answerChoices'
 import AnswerList from './AnswerList'
 import './QuizQuestion.css'
@@ -49,6 +50,22 @@ function QuizQuestion({
   onSubmitAnswer,
   question,
 }) {
+  const questionHeadingId = useId()
+  const feedbackTitleId = useId()
+  const feedbackMessageId = useId()
+  const questionHeadingRef = useRef(null)
+  const feedbackRef = useRef(null)
+
+  useEffect(() => {
+    questionHeadingRef.current?.focus()
+  }, [question?.id])
+
+  useEffect(() => {
+    if (hasSubmittedAnswer) {
+      feedbackRef.current?.focus()
+    }
+  }, [hasSubmittedAnswer, question?.id])
+
   if (!question) {
     return null
   }
@@ -57,31 +74,39 @@ function QuizQuestion({
   const feedback = getSubmittedFeedback(question, answerRecord)
 
   return (
-    <section className="quiz-question" aria-labelledby="quiz-question-heading">
+    <section className="quiz-question" aria-labelledby={questionHeadingId}>
       <div className="quiz-question__meta" aria-label="Question details">
         <span>{question.math_subject}</span>
         <span>{formatDifficulty(question.difficulty)}</span>
       </div>
 
-      <h2 id="quiz-question-heading">{question.question}</h2>
+      <h2 id={questionHeadingId} ref={questionHeadingRef} tabIndex={-1}>
+        {question.question}
+      </h2>
 
       <AnswerList
         answerRecord={answerRecord}
         answerChoices={question.answer_choice_list}
-        groupLabel={`Answer choices for: ${question.question}`}
         isSubmitted={hasSubmittedAnswer}
         onSelectAnswer={onSelectAnswer}
+        questionHeadingId={questionHeadingId}
         selectedAnswer={selectedAnswer}
       />
 
       <div className="quiz-question__feedback-region" aria-live="polite">
         {feedback ? (
           <div
+            aria-describedby={feedbackMessageId}
+            aria-labelledby={feedbackTitleId}
             className={`quiz-question__feedback quiz-question__feedback--${feedback.tone}`}
+            ref={feedbackRef}
             role="status"
+            tabIndex={-1}
           >
-            <p className="quiz-question__feedback-title">{feedback.title}</p>
-            <p>{feedback.message}</p>
+            <p className="quiz-question__feedback-title" id={feedbackTitleId}>
+              {feedback.title}
+            </p>
+            <p id={feedbackMessageId}>{feedback.message}</p>
           </div>
         ) : null}
       </div>
