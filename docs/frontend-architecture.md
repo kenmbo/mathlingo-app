@@ -679,15 +679,20 @@ A question and its choices may be represented with a `fieldset` and `legend` whe
 
 ## 13. Testing Strategy
 
-The repository does not currently have a documented automated test command.
+The frontend test strategy is documented in:
 
-When frontend testing is added, the preferred initial tools are:
+```text
+docs/testing-strategy.md
+```
 
-* Vitest.
-* React Testing Library.
-* `@testing-library/user-event`.
+The automated test command is:
 
-Adding the test dependencies should be a separate, explicit implementation task.
+```bash
+npm run test
+```
+
+Tests use Vitest, React Testing Library, `@testing-library/user-event`,
+`@testing-library/jest-dom`, and `jsdom`.
 
 Priority test cases:
 
@@ -806,9 +811,8 @@ Before completing frontend implementation work, run:
 ```bash
 npm run lint
 npm run build
+npm run test
 ```
-
-When an automated test script is added, it should also become part of the required validation process.
 
 Contributors must report any command that could not be run and must not claim that unavailable tests passed.
 

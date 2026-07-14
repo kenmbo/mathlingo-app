@@ -54,6 +54,11 @@ Current development dependencies:
 - `eslint-plugin-react-hooks`
 - `eslint-plugin-react-refresh`
 - `globals`
+- `vitest`
+- `@testing-library/react`
+- `@testing-library/user-event`
+- `@testing-library/jest-dom`
+- `jsdom`
 - `@types/react`
 - `@types/react-dom`
 
@@ -87,6 +92,18 @@ Run ESLint:
 
 ```bash
 npm run lint
+```
+
+Run the frontend test suite:
+
+```bash
+npm run test
+```
+
+Run tests in watch mode while developing:
+
+```bash
+npm run test:watch
 ```
 
 Create a production build:
@@ -173,6 +190,8 @@ Gamification should support learning. Points, badges, streaks, levels, and progr
 ## Important Project Docs
 
 - `docs/api-contract.md`: frontend/backend API contract and response shapes.
+- `docs/frontend-architecture.md`: frontend structure, state, API, and validation decisions.
+- `docs/testing-strategy.md`: frontend test tools, commands, boundaries, and mocking guidance.
 - `TODO.md`: implementation roadmap and milestone checklist.
 - `AGENTS.md`: Codex-specific project guidance, conventions, and current decisions.
 
@@ -185,7 +204,7 @@ Future Codex agents should read these docs before making code changes.
 - Keep implementation choices aligned with the existing React + Vite + ESLint setup.
 - Prefer small, maintainable components and clear UI states over broad rewrites.
 - Do not add authentication, persistent history, or large new dependencies without checking the current milestone in `TODO.md`.
-- Run `npm run lint` and, when useful, `npm run build` before finishing implementation tasks.
+- Run `npm run lint`, `npm run build`, and `npm run test` before finishing implementation tasks.
 
 ### Important sections for Codex
 
