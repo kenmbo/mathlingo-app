@@ -20,16 +20,16 @@ The initial roadmap targets the version 1.0 quiz experience:
 
 ## Current Focus
 
-Milestone 14: Accessibility Review
+Milestone 15: Add Frontend Test Infrastructure
 
 Status: Complete
 
-Next: Milestone 15 — Add Frontend Test Infrastructure.
+Next: Milestone 16 — Add Core Quiz Behavior Tests.
 
-Note: Screen-reader software was not available in this environment. The
-accessibility tree was inspected with Playwright's ARIA snapshot as an
-assistive-technology proxy, and a real screen-reader pass remains recommended
-when one is available.
+Note: Vitest, React Testing Library, `@testing-library/user-event`,
+`@testing-library/jest-dom`, and `jsdom` are installed. The initial
+app-render smoke test mocks the question API module and runs without a live
+backend.
 
 ---
 
@@ -1047,22 +1047,23 @@ Introduce the smallest testing setup needed to verify user-visible quiz behavior
 
 ## Tasks
 
-* [ ] Add:
+* [x] Add:
 
   * Vitest
   * React Testing Library
   * `@testing-library/user-event`
   * Required DOM test environment packages
-* [ ] Add a test script to `package.json`.
-* [ ] Add shared test setup only when needed.
-* [ ] Confirm test files are included by the configured runner.
-* [ ] Mock the API module rather than the global network where practical.
-* [ ] Do not make live backend or OpenAI requests.
-* [ ] Add one basic application-render test.
-* [ ] Document the test command in:
+* [x] Add a test script to `package.json`.
+* [x] Add shared test setup only when needed.
+* [x] Confirm test files are included by the configured runner.
+* [x] Mock the API module rather than the global network where practical.
+* [x] Do not make live backend or OpenAI requests.
+* [x] Add one basic application-render test.
+* [x] Document the test command in:
 
   * `README.md`
   * `docs/frontend-architecture.md`
+  * `docs/testing-strategy.md`
   * This file’s validation section
 
 ## Acceptance Criteria
@@ -1088,9 +1089,13 @@ Introduce the smallest testing setup needed to verify user-visible quiz behavior
 
 ## Validation
 
-* [ ] Run `npm run lint`.
-* [ ] Run `npm run build`.
-* [ ] Run the new test command.
+* [x] Run `npm run lint`.
+* [x] Run `npm run build`.
+* [x] Run the new test command.
+
+Validation note: `npm run lint`, `npm run build`, and `npm run test` all
+completed successfully. The initial Vitest suite includes one App render smoke
+test and does not call the live backend.
 
 ---
 
