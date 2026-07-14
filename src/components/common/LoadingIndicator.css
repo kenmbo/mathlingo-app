@@ -14,6 +14,11 @@
   box-shadow: var(--surface-shadow);
 }
 
+.loading-indicator:focus {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+}
+
 .loading-indicator__spinner {
   width: 2.125rem;
   height: 2.125rem;

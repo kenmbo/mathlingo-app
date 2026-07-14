@@ -18,11 +18,12 @@ const VALID_DIFFICULTIES = new Set(
   DIFFICULTY_OPTIONS.map((difficulty) => difficulty.value),
 )
 
-function createInvalidResult(errorMessage) {
+function createInvalidResult(errorMessage, errorField) {
   return {
     isValid: false,
     config: null,
     errorMessage,
+    errorField,
   }
 }
 
@@ -31,6 +32,7 @@ function createValidResult(config) {
     isValid: true,
     config,
     errorMessage: null,
+    errorField: null,
   }
 }
 
@@ -39,7 +41,7 @@ export function validateQuizSetupConfig({ difficulty, numQuestions }) {
     typeof difficulty === 'string' ? difficulty.trim().toLowerCase() : ''
 
   if (!VALID_DIFFICULTIES.has(normalizedDifficulty)) {
-    return createInvalidResult('Choose a quiz difficulty.')
+    return createInvalidResult('Choose a quiz difficulty.', 'difficulty')
   }
 
   const normalizedQuestionCount =
@@ -48,7 +50,10 @@ export function validateQuizSetupConfig({ difficulty, numQuestions }) {
       : String(numQuestions ?? '').trim()
 
   if (!/^\d+$/.test(normalizedQuestionCount)) {
-    return createInvalidResult('Enter a whole number from 1 to 20.')
+    return createInvalidResult(
+      'Enter a whole number from 1 to 20.',
+      'numQuestions',
+    )
   }
 
   const parsedQuestionCount = Number(normalizedQuestionCount)
@@ -57,7 +62,7 @@ export function validateQuizSetupConfig({ difficulty, numQuestions }) {
     parsedQuestionCount < QUIZ_SETUP_LIMITS.minQuestions ||
     parsedQuestionCount > QUIZ_SETUP_LIMITS.maxQuestions
   ) {
-    return createInvalidResult('Enter a number from 1 to 20.')
+    return createInvalidResult('Enter a number from 1 to 20.', 'numQuestions')
   }
 
   return createValidResult({

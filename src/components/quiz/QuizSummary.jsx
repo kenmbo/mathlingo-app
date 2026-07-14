@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react'
 import { createQuizSessionSummary } from '../../utils/quizScoring.js'
 import './QuizSummary.css'
 
@@ -26,6 +27,7 @@ function QuizSummary({
   onStartAnotherQuiz = () => undefined,
   questions = [],
 }) {
+  const summaryHeadingRef = useRef(null)
   const summary = createQuizSessionSummary({ questions, answers })
   const percentageText = formatPercentageScore(summary.percentageScore)
   const resultText =
@@ -33,11 +35,17 @@ function QuizSummary({
       ? 'No questions were completed in this session.'
       : `You answered ${summary.correctAnswers} of ${summary.totalQuestions} questions correctly.`
 
+  useEffect(() => {
+    summaryHeadingRef.current?.focus()
+  }, [])
+
   return (
     <section className="quiz-summary" aria-labelledby="quiz-summary-heading">
       <div className="quiz-summary__heading">
         <p className="quiz-summary__eyebrow">Quiz complete</p>
-        <h2 id="quiz-summary-heading">Session summary</h2>
+        <h2 id="quiz-summary-heading" ref={summaryHeadingRef} tabIndex={-1}>
+          Session summary
+        </h2>
         <p className="quiz-summary__lede">{resultText}</p>
       </div>
 

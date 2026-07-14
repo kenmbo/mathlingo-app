@@ -1,3 +1,4 @@
+import { useEffect, useId, useRef } from 'react'
 import './ErrorMessage.css'
 
 function ErrorMessage({
@@ -9,14 +10,28 @@ function ErrorMessage({
   retryLabel = 'Try again',
   returnToSetupLabel = 'Return to setup',
 }) {
+  const titleId = useId()
+  const messageId = useId()
+  const errorRef = useRef(null)
   const hasRetry = typeof onRetry === 'function'
   const hasReturnToSetup = typeof onReturnToSetup === 'function'
 
+  useEffect(() => {
+    errorRef.current?.focus()
+  }, [])
+
   return (
-    <section className="error-message" role="alert">
+    <section
+      aria-describedby={message ? messageId : undefined}
+      aria-labelledby={titleId}
+      className="error-message"
+      ref={errorRef}
+      role="alert"
+      tabIndex={-1}
+    >
       <div className="error-message__content">
-        <h2>{title}</h2>
-        {message ? <p>{message}</p> : null}
+        <h2 id={titleId}>{title}</h2>
+        {message ? <p id={messageId}>{message}</p> : null}
       </div>
 
       {details ? (

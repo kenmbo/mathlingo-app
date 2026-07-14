@@ -1,4 +1,4 @@
-import { useId, useState } from 'react'
+import { useEffect, useId, useRef, useState } from 'react'
 import {
   DIFFICULTY_OPTIONS,
   QUIZ_SETUP_DEFAULTS,
@@ -19,11 +19,31 @@ function QuizSetup({
   const [numQuestions, setNumQuestions] = useState(
     String(initialNumQuestions),
   )
-  const [countError, setCountError] = useState('')
+  const [setupError, setSetupError] = useState(null)
+  const countInputRef = useRef(null)
+  const firstDifficultyInputRef = useRef(null)
+  const setupHeadingId = useId()
+  const difficultyErrorId = useId()
   const countInputId = useId()
   const countHelpId = useId()
   const countErrorId = useId()
   const isFormDisabled = isLoading || isDisabled
+  const difficultyError =
+    setupError?.errorField === 'difficulty' ? setupError.errorMessage : ''
+  const countError =
+    setupError?.errorField === 'numQuestions' ? setupError.errorMessage : ''
+
+  useEffect(() => {
+    if (!setupError) {
+      return
+    }
+
+    if (setupError.errorField === 'difficulty') {
+      firstDifficultyInputRef.current?.focus()
+    } else {
+      countInputRef.current?.focus()
+    }
+  }, [setupError])
 
   function handleSubmit(event) {
     event.preventDefault()
@@ -38,41 +58,64 @@ function QuizSetup({
     })
 
     if (!validationResult.isValid) {
-      setCountError(validationResult.errorMessage)
+      setSetupError({
+        errorField: validationResult.errorField,
+        errorMessage: validationResult.errorMessage,
+      })
+
       return
     }
 
-    setCountError('')
+    setSetupError(null)
     onStart(validationResult.config)
+  }
+
+  function handleDifficultyChange(value) {
+    setDifficulty(value)
+
+    if (difficultyError) {
+      setSetupError(null)
+    }
   }
 
   function handleQuestionCountChange(event) {
     setNumQuestions(event.target.value)
 
     if (countError) {
-      setCountError('')
+      setSetupError(null)
     }
   }
 
   return (
-    <form className="quiz-setup" onSubmit={handleSubmit} noValidate>
+    <form
+      aria-labelledby={setupHeadingId}
+      className="quiz-setup"
+      onSubmit={handleSubmit}
+      noValidate
+    >
       <div className="quiz-setup__heading">
-        <h2>Set up a quiz</h2>
+        <h2 id={setupHeadingId}>Set up a quiz</h2>
         <p>
           Choose a difficulty and the number of questions for this practice
           round.
         </p>
       </div>
 
-      <fieldset className="quiz-setup__fieldset" disabled={isFormDisabled}>
+      <fieldset
+        aria-describedby={difficultyError ? difficultyErrorId : undefined}
+        aria-invalid={difficultyError ? 'true' : undefined}
+        className="quiz-setup__fieldset"
+        disabled={isFormDisabled}
+      >
         <legend>Difficulty</legend>
         <div className="quiz-setup__difficulty-options">
-          {DIFFICULTY_OPTIONS.map((option) => (
+          {DIFFICULTY_OPTIONS.map((option, index) => (
             <label className="quiz-setup__difficulty-option" key={option.value}>
               <input
                 checked={difficulty === option.value}
                 name="difficulty"
-                onChange={() => setDifficulty(option.value)}
+                onChange={() => handleDifficultyChange(option.value)}
+                ref={index === 0 ? firstDifficultyInputRef : undefined}
                 type="radio"
                 value={option.value}
               />
@@ -80,18 +123,29 @@ function QuizSetup({
             </label>
           ))}
         </div>
+        {difficultyError ? (
+          <p
+            className="quiz-setup__error"
+            id={difficultyErrorId}
+            role="alert"
+          >
+            {difficultyError}
+          </p>
+        ) : null}
       </fieldset>
 
       <div className="quiz-setup__field">
         <label htmlFor={countInputId}>Number of questions</label>
         <input
           aria-describedby={`${countHelpId}${countError ? ` ${countErrorId}` : ''}`}
+          aria-errormessage={countError ? countErrorId : undefined}
           aria-invalid={countError ? 'true' : 'false'}
           autoComplete="off"
           disabled={isFormDisabled}
           id={countInputId}
           inputMode="numeric"
           onChange={handleQuestionCountChange}
+          ref={countInputRef}
           type="text"
           value={numQuestions}
         />

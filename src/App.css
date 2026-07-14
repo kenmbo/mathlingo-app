@@ -65,6 +65,11 @@
   overflow-wrap: anywhere;
 }
 
+.quiz-state:focus {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+}
+
 .quiz-state p,
 .quiz-state--empty p {
   color: var(--color-text-muted);

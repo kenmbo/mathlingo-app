@@ -1,3 +1,4 @@
+import { useId } from 'react'
 import './QuizHeader.css'
 
 function clampPercentage(value) {
@@ -21,6 +22,8 @@ function QuizHeader({
   progressPercentage = 0,
   totalQuestions = 0,
 }) {
+  const progressLabelId = useId()
+  const progressTextId = useId()
   const currentQuestionNumber = getCurrentQuestionNumber(
     currentQuestionIndex,
     totalQuestions,
@@ -34,16 +37,25 @@ function QuizHeader({
   return (
     <header className="quiz-header" aria-label="Quiz progress">
       <div className="quiz-header__summary">
-        <p className="quiz-header__label">Progress</p>
-        <p className="quiz-header__text">{progressText}</p>
+        <p className="quiz-header__label" id={progressLabelId}>
+          Progress
+        </p>
+        <p
+          aria-live="polite"
+          className="quiz-header__text"
+          id={progressTextId}
+        >
+          {progressText}
+        </p>
       </div>
 
       <progress
-        aria-label="Quiz progress"
+        aria-describedby={progressTextId}
+        aria-labelledby={progressLabelId}
         aria-valuetext={progressText}
         className="quiz-header__progress"
-        max={100}
-        value={progressValue}
+        max={totalQuestions > 0 ? totalQuestions : 1}
+        value={totalQuestions > 0 ? currentQuestionNumber : progressValue}
       >
         {progressText}
       </progress>

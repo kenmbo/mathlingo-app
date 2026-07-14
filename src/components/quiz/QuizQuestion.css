@@ -32,6 +32,12 @@
   overflow-wrap: anywhere;
 }
 
+.quiz-question h2:focus,
+.quiz-question__feedback:focus {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+}
+
 .answer-list {
   min-width: 0;
   display: grid;
