@@ -56,6 +56,11 @@ Current development dependencies:
 - `globals`
 - `@types/react`
 - `@types/react-dom`
+- `vitest`
+- `@testing-library/react`
+- `@testing-library/user-event`
+- `@testing-library/jest-dom`
+- `jsdom`
 
 See `package.json` for exact versions and scripts.
 
@@ -87,6 +92,18 @@ Run ESLint:
 
 ```bash
 npm run lint
+```
+
+Run the frontend test suite:
+
+```bash
+npm run test
+```
+
+Run tests in watch mode while developing:
+
+```bash
+npm run test:watch
 ```
 
 Create a production build:
@@ -174,4 +191,6 @@ Gamification should support learning. Points, badges, streaks, levels, and progr
 
 - `docs/api-contract.md`: frontend/backend API contract and response shapes.
 - `TODO.md`: implementation roadmap and milestone checklist.
+- `docs/frontend-architecture.md`: frontend structure, state, API, and validation decisions.
+- `docs/testing-strategy.md`: frontend test tools, commands, boundaries, and mocking guidance.
 
