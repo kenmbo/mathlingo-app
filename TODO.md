@@ -19,16 +19,18 @@ The initial roadmap targets the version 1.0 quiz experience:
 
 ## Current Focus
 
-Milestone 15
+Milestone 16
 
 Status: Complete
 
-Next: Milestone 16
+Next: Milestone 17
 
 Note: Vitest, React Testing Library, `@testing-library/user-event`,
 `@testing-library/jest-dom`, and `jsdom` are installed. The initial
 app-render smoke test mocks the question API module and runs without a live
 backend.
+`docs/testing-strategy.md` now documents this split test organization.
+
 ---
 
 ## How to Use This File
@@ -1049,26 +1051,26 @@ Protect the primary version 1.0 quiz flow with user-centered automated tests.
 
 ## Tasks
 
-* [ ] Test quiz setup validation.
-* [ ] Test that selected configuration reaches the API module.
-* [ ] Test loading-state presentation.
-* [ ] Test valid question rendering.
-* [ ] Test invalid response handling.
-* [ ] Test empty-response handling.
-* [ ] Test network or normalized API error handling.
-* [ ] Test answer selection.
-* [ ] Test explicit answer submission.
-* [ ] Test correct feedback.
-* [ ] Test incorrect feedback.
-* [ ] Test submitted-answer locking.
-* [ ] Test prevention of duplicate scoring.
-* [ ] Test question progression.
-* [ ] Test final-question completion.
-* [ ] Test session-summary scoring.
-* [ ] Test retry behavior.
-* [ ] Test starting another quiz.
-* [ ] Use `user-event` for user interactions.
-* [ ] Avoid testing internal state variables directly.
+* [x] Test quiz setup validation.
+* [x] Test that selected configuration reaches the API module.
+* [x] Test loading-state presentation.
+* [x] Test valid question rendering.
+* [x] Test invalid response handling.
+* [x] Test empty-response handling.
+* [x] Test network or normalized API error handling.
+* [x] Test answer selection.
+* [x] Test explicit answer submission.
+* [x] Test correct feedback.
+* [x] Test incorrect feedback.
+* [x] Test submitted-answer locking.
+* [x] Test prevention of duplicate scoring.
+* [x] Test question progression.
+* [x] Test final-question completion.
+* [x] Test session-summary scoring.
+* [x] Test retry behavior.
+* [x] Test starting another quiz.
+* [x] Use `user-event` for user interactions.
+* [x] Avoid testing internal state variables directly.
 
 ## Acceptance Criteria
 
@@ -1097,11 +1099,14 @@ Protect the primary version 1.0 quiz flow with user-centered automated tests.
 
 ## Validation
 
-* [ ] Run `npm run lint`.
-* [ ] Run `npm run build`.
-* [ ] Run the documented test command.
-* [ ] Confirm tests pass without a running backend.
+* [x] Run `npm run lint`.
+* [x] Run `npm run build`.
+* [x] Run the documented test command.
+* [x] Confirm tests pass without a running backend.
 
+Validation note: `npm run lint`, `npm run build`, and `npm run test` all
+completed successfully. The initial Vitest suite includes one App render smoke
+test and does not call the live backend.
 ---
 
 # Milestone 17 — Version 1.0 Release Review
