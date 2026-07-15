@@ -32,6 +32,7 @@ answer-flow, and summary test files with shared fixtures and helpers under
 submission and feedback, answer locking, duplicate scoring prevention,
 progression, summary scoring, retry, and restarting a quiz. The tests mock
 `src/api/questionsApi.js` and do not require the live Flask backend.
+`docs/testing-strategy.md` now documents this split test organization.
 
 ---
 
