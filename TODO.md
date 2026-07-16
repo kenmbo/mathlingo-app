@@ -19,17 +19,18 @@ The initial roadmap targets the version 1.0 quiz experience:
 
 ## Current Focus
 
-Milestone 16
+Current: Milestone 17: Version 1.0 Release Review
 
 Status: Complete
 
-Next: Milestone 17
+Next: Milestone 17: Version 1.0 Release Review
 
-Note: Vitest, React Testing Library, `@testing-library/user-event`,
-`@testing-library/jest-dom`, and `jsdom` are installed. The initial
-app-render smoke test mocks the question API module and runs without a live
-backend.
-`docs/testing-strategy.md` now documents this split test organization.
+Note: The version 1.0 frontend release review is complete. The live local
+backend happy path, desktop and mobile layouts, keyboard-only flow, empty
+state, error state, production preview, validation commands, starter-content
+searches, API contract review, architecture review, and secret checks were
+completed. No version 1.0 frontend release blockers were found.
+
 
 ---
 
@@ -1117,15 +1118,15 @@ Confirm that the initial quiz experience satisfies the documented release goal a
 
 ## Tasks
 
-* [ ] Review all completed milestones.
-* [ ] Search for remaining Vite starter content.
-* [ ] Search for temporary placeholders and debug output.
-* [ ] Search for hard-coded backend URLs.
-* [ ] Search for accidentally committed secrets.
-* [ ] Verify the public API request matches `docs/api-contract.md`.
-* [ ] Verify the implementation matches `docs/frontend-architecture.md`.
-* [ ] Update architecture documentation for resolved open decisions.
-* [ ] Verify every major UI state:
+* [x] Review all completed milestones.
+* [x] Search for remaining Vite starter content.
+* [x] Search for temporary placeholders and debug output.
+* [x] Search for hard-coded backend URLs.
+* [x] Search for accidentally committed secrets.
+* [x] Verify the public API request matches `docs/api-contract.md`.
+* [x] Verify the implementation matches `docs/frontend-architecture.md`.
+* [x] Update architecture documentation for resolved open decisions.
+* [x] Verify every major UI state:
 
   * Idle
   * Loading
@@ -1133,12 +1134,12 @@ Confirm that the initial quiz experience satisfies the documented release goal a
   * Empty
   * Error
   * Completed
-* [ ] Complete a manual desktop quiz.
-* [ ] Complete a manual mobile-width quiz.
-* [ ] Complete a keyboard-only quiz.
-* [ ] Run every documented validation command.
-* [ ] Record remaining known limitations.
-* [ ] Move unfinished optional work into the Future section.
+* [x] Complete a manual desktop quiz.
+* [x] Complete a manual mobile-width quiz.
+* [x] Complete a keyboard-only quiz.
+* [x] Run every documented validation command.
+* [x] Record remaining known limitations.
+* [x] Move unfinished optional work into the Future section.
 
 ## Acceptance Criteria
 
@@ -1170,17 +1171,26 @@ Confirm that the initial quiz experience satisfies the documented release goal a
 
 ## Validation
 
-* [ ] Run `npm run lint`.
-* [ ] Run `npm run build`.
-* [ ] Run the documented test command.
-* [ ] Complete the manual happy path.
-* [ ] Test the error path.
-* [ ] Test the empty path.
-* [ ] Test at desktop width.
-* [ ] Test at mobile width.
-* [ ] Complete a keyboard-only pass.
-* [ ] Inspect the browser console.
-* [ ] Review the production build locally.
+* [x] Run `npm run lint`.
+* [x] Run `npm run build`.
+* [x] Run the documented test command.
+* [x] Complete the manual happy path.
+* [x] Test the error path.
+* [x] Test the empty path.
+* [x] Test at desktop width.
+* [x] Test at mobile width.
+* [x] Complete a keyboard-only pass.
+* [x] Inspect the browser console.
+* [x] Review the production build locally.
+
+Validation note: `npm run lint`, `npm run build`, and `npm run test` all
+completed successfully. A direct live-backend request to
+`/stream_questions?num_questions=2&difficulty=medium` returned HTTP `200` with
+two valid public question objects. Headless browser release checks passed
+against both the Vite dev server and production preview. Normal live-backend
+flows had no browser console errors. Empty and error states were reviewed with
+route interception; the deliberate `500` error check produced the expected
+browser network console error.
 
 ---
 
