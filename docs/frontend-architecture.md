@@ -249,9 +249,9 @@ The known undocumented server failure caused by a missing backend OpenAI key sho
 
 ---
 
-## 5. Proposed Source Structure
+## 5. Current Source Structure
 
-The initial project structure should remain small:
+The project structure remains intentionally small:
 
 ```text
 src/
@@ -260,8 +260,7 @@ src/
 ├── components/
 │   ├── common/
 │   │   ├── ErrorMessage.jsx
-│   │   ├── LoadingIndicator.jsx
-│   │   └── ProgressBar.jsx
+│   │   └── LoadingIndicator.jsx
 │   └── quiz/
 │       ├── AnswerChoice.jsx
 │       ├── AnswerList.jsx
@@ -269,19 +268,32 @@ src/
 │       ├── QuizQuestion.jsx
 │       ├── QuizSetup.jsx
 │       └── QuizSummary.jsx
+├── config/
+│   └── environment.js
 ├── hooks/
 │   └── useQuizSession.js
+├── test/
+│   ├── fixtures/
+│   │   └── quizQuestions.js
+│   ├── utils/
+│   │   └── appTestUtils.jsx
+│   └── setup.js
 ├── utils/
+│   ├── answerChoices.js
 │   ├── questionValidation.js
-│   └── quizScoring.js
+│   ├── quizScoring.js
+│   └── quizSetupValidation.js
+├── App.answerFlow.test.jsx
 ├── App.jsx
+├── App.requestStates.test.jsx
+├── App.setup.test.jsx
+├── App.summary.test.jsx
 ├── main.jsx
 └── index.css
 ```
 
-This structure is provisional. Create directories only when they are needed by the current implementation.
-
-Avoid creating empty placeholder files or deeply nested directories solely to match this example.
+Avoid creating empty placeholder files or deeply nested directories solely to
+match a planned future structure.
 
 ---
 
@@ -761,13 +773,9 @@ These items may appear in `TODO.md` under future work.
 
 ## 16. Open Decisions
 
-The following decisions may be resolved during implementation:
+The following decisions remain open for future milestones:
 
-* Whether selected answers can be changed before submission.
-* Whether the quiz setup remains visible after a request error.
-* Whether API response validation remains custom or later uses a schema library.
-* Whether component styles use colocated CSS files or a feature-level stylesheet.
-* Whether a timer enters the initial release.
+* Whether a timer enters a future release.
 * Whether `/chat` becomes part of the frontend in a later release.
 
 When an open decision is resolved, update this document and the related implementation milestone.
@@ -781,30 +789,53 @@ Resolved during Milestone 12:
 * Version 1.0 includes a simple read-only per-question review derived from the completed in-memory session.
 * Version 1.0 does not include AI-generated explanations, ChatGPT review calls, backend review endpoints, or persistent review history.
 
+Resolved during Milestone 13:
+
+* Component styles use colocated CSS files plus shared custom properties in `src/index.css`.
+
+Resolved during Milestones 15 and 16:
+
+* Tests use Vitest, React Testing Library, `@testing-library/user-event`, `@testing-library/jest-dom`, and `jsdom`.
+* App behavior tests mock `src/api/questionsApi.js`; they do not call the live Flask backend.
+
+Resolved during Milestone 17:
+
+* Selected answers can be changed before submission.
+* Selected answers are locked after submission.
+* The quiz setup does not remain visible after a request error; the error state replaces the workspace and provides retry and return-to-setup actions.
+* API response validation remains custom lightweight validation for version 1.0.
+
 ---
 
-## 17. Initial Component Hierarchy
+## 17. Current Component Hierarchy
 
-The initial rendered hierarchy may resemble:
+The current rendered hierarchy is:
 
 ```text
 App
 ├── QuizSetup
 ├── LoadingIndicator
 ├── ErrorMessage
-└── ActiveQuiz
-    ├── QuizHeader
-    │   └── ProgressBar
-    ├── QuizQuestion
-    │   └── AnswerList
-    │       └── AnswerChoice × 4
-    └── QuizControls
-
-App
+├── Active quiz container
+│   ├── QuizHeader
+│   └── QuizQuestion
+│       └── AnswerList
+│           └── AnswerChoice × 4
 └── QuizSummary
 ```
 
-`ActiveQuiz` and `QuizControls` may begin inside `App` and be extracted only when their responsibilities become substantial.
+`App` owns the active quiz container directly because it is still small enough
+not to require a separate component. `QuizHeader` uses a native `<progress>`
+element; a shared `ProgressBar` component is not currently needed.
+
+State ownership remains:
+
+```text
+App
+└── useQuizSession
+    ├── QuizQuestion
+    └── QuizSummary
+```
 
 ---
 
