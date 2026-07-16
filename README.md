@@ -6,7 +6,7 @@ This repository is the React frontend for MathLingo. It will serve multiple-choi
 
 ## Current Status
 
-This project is currently in the early frontend implementation phase.
+This project is currently in the version 1.0 release-review phase.
 
 The codebase started from the React + Vite scaffold:
 
@@ -14,7 +14,7 @@ The codebase started from the React + Vite scaffold:
 npm create vite@latest mathlingo-app -- --template react
 ```
 
-The default Vite demonstration interface has been replaced with a minimal MathLingo application shell. The first quiz setup form, in-memory quiz session hook, active-question rendering components, submitted-answer feedback, next/finish controls, active quiz progress header, and completed-session summary are available, while final visual design is still pending a future milestone.
+The default Vite demonstration interface has been replaced with the MathLingo quiz experience. The quiz setup form, in-memory quiz session hook, active-question rendering components, submitted-answer feedback, next/finish controls, active quiz progress header, empty/error states, completed-session summary, and frontend test suite are available for version 1.0 review.
 
 ## Release Goal
 
@@ -193,4 +193,5 @@ Gamification should support learning. Points, badges, streaks, levels, and progr
 - `TODO.md`: implementation roadmap and milestone checklist.
 - `docs/frontend-architecture.md`: frontend structure, state, API, and validation decisions.
 - `docs/testing-strategy.md`: frontend test tools, commands, boundaries, and mocking guidance.
+- `docs/release-review-1.0.md`: release-readiness checks and known limitations for version 1.0.
 
